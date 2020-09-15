@@ -1,0 +1,17 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register assembly="Intek.WebControls" namespace="Intek.WebControls" tagprefix="Intek" %>
+<Intek:ComboBox runat="server" SpriteCssFilePath="~/App_Themes/Moderno/{0}/sprite.css" CssFilePath="~/App_Themes/Moderno/{0}/styles.css" 
+    CssPostfix="Moderno" LoadingPanelImagePosition="Top"  LoadingPanelText="" ShowShadow="False" ItemStyle-HorizontalAlign="Right">
+    <DropDownButton>
+		<Image>
+			<SpriteProperties HottrackedCssClass="dxEditors_edtDropDownHover_Moderno" PressedCssClass="dxEditors_edtDropDownPressed_Moderno" />
+		</Image>
+	</DropDownButton>
+    <ValidationSettings>
+        <ErrorFrameStyle ImageSpacing="4px">
+            <ErrorTextPaddings PaddingLeft="4px"></ErrorTextPaddings>
+        </ErrorFrameStyle>
+    </ValidationSettings>
+    <LoadingPanelImage Url="~/App_Themes/Moderno/Editors/Loading.gif"></LoadingPanelImage>
+</Intek:ComboBox>

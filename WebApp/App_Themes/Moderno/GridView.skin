@@ -1,0 +1,38 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<%@ Register assembly="Intek.WebControls" namespace="Intek.WebControls" tagprefix="Intek" %>
+<Intek:GridView runat="server" CssFilePath="~/App_Themes/Moderno/{0}/styles.css" CssPostfix="Moderno">
+    <Images SpriteCssFilePath="~/App_Themes/Moderno/{0}/sprite.css">
+        <LoadingPanel Url="~/App_Themes/Moderno/GridView/Loading.gif"></LoadingPanel>
+        <LoadingPanelOnStatusBar Url="~/App_Themes/Moderno/GridView/gvLoadingOnStatusBar.gif"></LoadingPanelOnStatusBar>
+    </Images>
+    <ImagesFilterControl>
+        <LoadingPanel Url="~/App_Themes/Moderno/Editors/Loading.gif"></LoadingPanel>
+    </ImagesFilterControl>
+    <ImagesEditors>
+        <DropDownEditDropDown>
+            <SpriteProperties HottrackedCssClass="dxEditors_edtDropDownHover_Moderno" PressedCssClass="dxEditors_edtDropDownPressed_Moderno" />
+        </DropDownEditDropDown>
+        <SpinEditIncrement>
+            <SpriteProperties HottrackedCssClass="dxEditors_edtSpinEditIncrementImageHover_Moderno" PressedCssClass="dxEditors_edtSpinEditIncrementImagePressed_Moderno" />
+        </SpinEditIncrement>        
+        <SpinEditDecrement>
+            <SpriteProperties HottrackedCssClass="dxEditors_edtSpinEditDecrementImageHover_Moderno" PressedCssClass="dxEditors_edtSpinEditDecrementImagePressed_Moderno" />
+        </SpinEditDecrement>
+        <SpinEditLargeIncrement>
+            <SpriteProperties HottrackedCssClass="dxEditors_edtSpinEditLargeIncImageHover_Moderno" PressedCssClass="dxEditors_edtSpinEditLargeIncImagePressed_Moderno" />
+        </SpinEditLargeIncrement>        
+        <SpinEditLargeDecrement>
+            <SpriteProperties HottrackedCssClass="dxEditors_edtSpinEditLargeDecImageHover_Moderno" PressedCssClass="dxEditors_edtSpinEditLargeDecImagePressed_Moderno" />
+        </SpinEditLargeDecrement>
+    </ImagesEditors>
+    <SettingsLoadingPanel ImagePosition="Top" />
+    <SettingsPager CurrentPageNumberFormat="{0}"></SettingsPager>
+    <Styles>
+        <LoadingPanel ImageSpacing="8px"></LoadingPanel>
+    </Styles>
+    <StylesEditors>
+        <ProgressBar Height="25px"></ProgressBar>
+        <CalendarHeader Spacing="1px"></CalendarHeader>
+    </StylesEditors>
+</Intek:GridView>

@@ -1,0 +1,128 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApp.Pages.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../Styles/bootstrap.min.css" />
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../Styles/bootstrap-rtl.min.css" />
+    <link rel="stylesheet" href="../Scripts/toastr.min.css" />
+    <script src="../Scripts/toastr.min.js"></script>
+    <script src="../Scripts/script.js"></script>
+    <link rel="stylesheet" href="../Styles/StyleSheet.css" />
+    <script src="../Scripts/security.js"></script>
+    <script src="../Scripts/tabulator.min.js"></script>
+    <link rel="stylesheet" href="../Scripts/tabulator.min.css" />
+    <script src="../Scripts/DBTables.js"></script>
+    <script src="../Scripts/push.js"></script>
+    <script type="text/javascript" src="../Scripts/xlsx.full.min.js"></script>
+    <script src="../Scripts/jspdf.min.js"></script>
+    <script src="../Scripts/jspdf.plugin.autotable.js"></script>
+    <link rel="icon" href="../Images/intek.png" />
+
+
+    <script>
+        $(document).ready(function () {
+            $('#NewEdit').hide();
+            hdfAction.Set('ID', null);
+            $("#btnNew").click(function () {
+                if (btnNew.GetEnabled()) {
+                    Clear();
+                    btnNew.SetEnabled(false);
+                    btnNew.SetVisible(false);
+                    $("#NewEdit").slideDown('fast', function () {
+                        $('html, body').animate({
+                            scrollTop: $("#NewEdit").offset().top
+                        }, 1000);
+                    });
+                }
+            });
+        });
+        function Cancel() {
+            $('#NewEdit').slideUp('fast');
+            Clear();
+            delete key;
+        }
+
+        function AddNameToAutomation(username) {
+            $("#AutomationName").append(" " + "<span style=\"color:rgb(80, 206, 208);\">(</span>" + username + "<span style=\"color:rgb(80, 206, 208);\">)</span>");
+
+        }
+    </script>
+</head>
+<body style="background-color: #d9d9d9; overflow-x: hidden">
+    <form id="form1" runat="server">
+        <Aut:HiddenField ID="hdfAction" ClientInstanceName="hdfAction" runat="server" />
+        <dx:ASPxHiddenField ID="action" ClientInstanceName="action" runat="server" />
+        <nav class="navbar navbar-inverse" style="font-family: IRANSansWeb_Bold;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="Default.aspx" id="AutomationName" style="color: #f2f2f2; font-family: IRANSansWeb">اتوماسیون اداری اینتک</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" gref="" gid="E22FF517-6BA8-4DD1-8ADC-45B1C94B1BD6" href="#">امنیت<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="Users.aspx" gref="E22FF517-6BA8-4DD1-8ADC-45B1C94B1BD6" gid="44FCA737-C86E-4249-B5C9-E5955E45EE7E">کاربران</a></li>
+                                <li><a href="Levels.aspx" gref="E22FF517-6BA8-4DD1-8ADC-45B1C94B1BD6" gid="0A7CE8EB-F298-48D6-AA20-85FC9F7C98A9">سطوح</a></li>
+                                <li><a href="Roles.aspx" gref="E22FF517-6BA8-4DD1-8ADC-45B1C94B1BD6" gid="F840CA59-6BB1-403A-8638-9E471AAC8E22">نقش ها</a></li>
+                                <li><a href="RoleGroup.aspx" gref="E22FF517-6BA8-4DD1-8ADC-45B1C94B1BD6" gid="32F00EA9-D421-4B87-8D15-D6F4F8542906">انتخاب بخش</a></li>
+                                <li><a href="ChangePassword.aspx" gref="E22FF517-6BA8-4DD1-8ADC-45B1C94B1BD6" gid="53C72925-8CB6-46A5-ACB1-3844F3484881">تغییر رمز</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" gref="" gid="5DFC1B7C-E3FB-4304-8FF5-FA964A4EECA5">اطلاعات پایه<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="RequestModel.aspx" gref="5DFC1B7C-E3FB-4304-8FF5-FA964A4EECA5" gid="556B0548-9202-4296-9F87-7B115710CDC8">تعریف درخواست</a></li>
+                                <li><a href="RequestType.aspx" gref="5DFC1B7C-E3FB-4304-8FF5-FA964A4EECA5" gid="1D11E36C-5D66-472C-8B49-FCA560A9EDD9">نوع درخواست</a></li>
+                                <li><a href="RequestStatus.aspx" gref="5DFC1B7C-E3FB-4304-8FF5-FA964A4EECA5" gid="3C9993AB-07B4-467F-9F02-27460DB4F793">حالت درخواست</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" gref="" gid="A9462B29-B091-4F3D-8F48-0EC42BDF460B">درخواست<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="SubmitRequest.aspx" gref="A9462B29-B091-4F3D-8F48-0EC42BDF460B" gid="902C8971-0A51-4A01-8CC1-FB0DC2B6761B">ثبت درخواست</a></li>
+                                <li><a href="Dashboard.aspx" gref="A9462B29-B091-4F3D-8F48-0EC42BDF460B" gid="E2BE42FD-5530-4668-AC12-74D33274AE7F">داشبورد</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" gref="" gid="E37F8409-4AB1-47D8-B4DA-B357589884B8">وسایل<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="MyProducts.aspx" gref="E37F8409-4AB1-47D8-B4DA-B357589884B8" gid="BE929B84-B1E4-4CE3-94B7-9DD8BCF63E10">وسایل من</a></li>
+                                <li><a href="ProductType.aspx" gref="E37F8409-4AB1-47D8-B4DA-B357589884B8" gid="81DC5955-467A-435B-9243-CB8E47600413">انواع اموال</a></li>
+                                <li><a href="Product.aspx" gref="E37F8409-4AB1-47D8-B4DA-B357589884B8" gid="ECBC04B9-1BA5-460A-AA2A-8B965F5E31F5">لیست اموال</a></li>
+                                <li><a href="UserProduct.aspx" gref="E37F8409-4AB1-47D8-B4DA-B357589884B8" gid="252E6F47-EE5C-4028-A307-6A5EC476D7F7">وسایل پرسنل</a></li>
+                                <li><a href="ConsumableProducts.aspx" gref="E37F8409-4AB1-47D8-B4DA-B357589884B8" gid="A78CC8C4-FF5A-4D6A-93EC-B13C93C61A05">وسایل مصرفی</a></li>
+                                <li><a href="ProductsReport.aspx" gref="E37F8409-4AB1-47D8-B4DA-B357589884B8" gid="AB8AD16D-4ED5-4B0D-A9C7-AA61BDB4BC64">گزارش اموال شرکت</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="http://10.1.1.95/Automation/Pages/Login.aspx" onclick="logout()"><span class="glyphicon glyphicon-log-in"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div>
+                <asp:ContentPlaceHolder ID="body" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

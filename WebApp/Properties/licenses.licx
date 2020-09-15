@@ -1,0 +1,12 @@
+DevExpress.Patch.InMemoryPatch, DevExpress.Patch.Common, Version=6.2.0.0, Culture=neutral, PublicKeyToken=7fc7bfca2443de66
+DevExpress.Web.ASPxEditors.ASPxButton, DevExpress.Web.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+WebComponent.HiddenField, WebComponent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WebComponent.TreeList, WebComponent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WebComponent.ListBox, WebComponent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WebComponent.Memo, WebComponent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WebComponent.ComboBox, WebComponent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WebComponent.Button, WebComponent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WebComponent.Label, WebComponent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WebComponent.TextBox, WebComponent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DevExpress.Web.ASPxHiddenField.ASPxHiddenField, DevExpress.Web.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+WebComponent.GridView, WebComponent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null

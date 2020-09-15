@@ -1,0 +1,400 @@
+﻿@font-face {
+    font-family: 'BNazanin';
+    src: url('../Fonts/BNazanin.eot');
+    src: local('BNazanin'), url('../Fonts/BNazanin.woff') format('woff'), url('../Fonts/BNazanin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'titr';
+    src: url('../Fonts/titr.eot');
+    src: local('titr'), url('../Fonts/titr.woff') format('woff'), url('../Fonts/titr.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BRoya';
+    src: url('../Fonts/BRoya.eot');
+    src: local('BRoya'), url('../Fonts/BRoya.woff') format('woff'), url('../Fonts/BRoya.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IRANSansWeb';
+    src: url('../Fonts/IRANSansWeb.eot');
+    src: local('IRANSansWeb'), url('../Fonts/IRANSansWeb.woff') format('woff'), url('../Fonts/IRANSansWeb.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IRANSansWeb_Bold';
+    src: url('../Fonts/IRANSansWeb_Bold.eot');
+    src: local('IRANSansWeb_Bold'), url('../Fonts/IRANSansWeb_Bold.woff') format('woff'), url('../Fonts/titr.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IRANSansWeb_Light';
+    src: url('../Fonts/IRANSansWeb_Light.eot');
+    src: local('IRANSansWeb_Light'), url('../Fonts/IRANSansWeb_Light.woff') format('woff'), url('../Fonts/IRANSansWeb_Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IRANSansWeb_Medium';
+    src: url('../Fonts/IRANSansWeb_Medium.eot');
+    src: local('IRANSansWeb_Medium'), url('../Fonts/IRANSansWeb_Medium.woff') format('woff'), url('../Fonts/IRANSansWeb_Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IRANSansWeb_UltraLight';
+    src: url('../Fonts/IRANSansWeb_UltraLight.eot');
+    src: local('IRANSansWeb_UltraLight'), url('../Fonts/IRANSansWeb_UltraLight.woff') format('woff'), url('../Fonts/IRANSansWeb_UltraLight.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'flat';
+    src: url('../Fonts/flat.eot');
+    src: local('flat'), url('../Fonts/flat.woff') format('woff'), url('../Fonts/flat.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: local('Vazir'), url('../Fonts/Vazir.woff') format('woff'), url('../Fonts/Vazir.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rezvan';
+    src: local('Rezvan'), url('../Fonts/Rezvan.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Melat';
+    src: local('Melat'), url('../Fonts/Melat.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Melatlight';
+    src: local('Melatlight'), url('../Fonts/Melatlight.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.GridHidePanels {
+    visibility: hidden;
+    display: none;
+}
+
+.Grid tr:hover:not(:first-child) {
+    background-color: rgba(199, 218, 229, 0.7);
+}
+/*.Grid tr:nth-child(even) {
+    background-color: #f2f2f2;
+}*/
+
+.form-control {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.Labelstyle {
+    margin: 10px;
+    font-family: 'B Elham'
+}
+
+.dxbButton_custom {
+    width: 70px;
+    height: 38px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    cursor: pointer;
+    color: white;
+    border-radius: 8px;
+    vertical-align: central;
+}
+
+    .dxbButton_custom:hover {
+        background-color: white;
+        color: black;
+    }
+.dxeTextBox {
+    border: 1px solid #cccccc;
+    color: white;
+    text-align: center;
+    font-size: 13px;
+    color: white;
+    border-radius: 10px;
+    vertical-align: central;
+}
+.dxeMemo {
+    border: 1px solid #cccccc;
+    color: white;
+    color: white;
+    border-radius: 7px;
+}
+.Newbtn {
+    background-color: rgb(58, 96, 146);
+    border: 2px solid rgb(58, 96, 146);
+}
+
+.Cancelbtn {
+    background-color: #b30000;
+    border: 2px solid #b30000;
+    padding-top:0.7rem;
+}
+
+.Savebtn {
+    background-color: #367c3a;
+    border: 2px solid #367c3a;
+    padding-top:0.7rem;
+}
+.ProductSavebtn {
+    background-color: #367c3a;
+    border: 2px solid #367c3a;
+    padding-top: 0.7rem;
+    width: 100% !important;
+}
+.ProductCancelbtn {
+    background-color: #b30000;
+    border: 2px solid #b30000;
+    padding-top: 0.7rem;
+    width:100% !important;
+}
+#toast-container {
+    font-family: 'B Nazanin';
+    font-size: 20px;
+}
+
+.InfoTable p {
+    font-size: 32px;
+    font-family: 'B Yekan';
+}
+
+.InfoLabel {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.well {
+    border-radius: 15px;
+}
+.Action-Group {
+    width: 450px;
+}
+
+    .Action-Group .Action-Label {
+        width: 70px;
+        text-align: center;
+        vertical-align: middle;
+        padding-top: 6px;
+        background-color: rgb(58, 96, 146);
+        height: 35px;
+        color: #fff;
+        font-size: 14px !important;
+        margin-left: 0;
+        float: right;
+        margin: 0;
+        margin-left: -7px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .Action-Group .Action-Combo .dxeButtonEditSys {
+        width: 140px !important;
+        /*box-shadow: inset 0 0 0 2px #223855;
+                -webkit-box-shadow: inset 0 0 0 2px #223855;
+                -moz-box-shadow: inset 0 0 0 2px #223855;
+                -o-box-shadow: inset 0 0 0 2px #223855;
+                -ms-box-shadow: inset 0 0 0 2px #223855;*/
+        border-color: rgb(58, 96, 146);
+    }
+
+.Action-Combo {
+    margin: 0 !important;
+}
+
+.combocustom {
+    -webkit-border-radius: 9px !important;
+    -moz-border-radius: 9px !important;
+    border-radius: 9px !important;
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    border-collapse: separate !important;
+    border-color: #cccccc;
+}
+/*.comboaction {
+    -webkit-border-top-left-radius: 9px !important;
+    -webkit-border-bottom-left-radius: 9px !important;
+    -moz-border-radius-topleft: 9px !important;
+    -moz-border-radius-bottomleft: 9px !important;
+    border-top-left-radius: 9px !important;
+    border-bottom-left-radius: 9px !important;
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    border-collapse: separate !important;
+    border-color: #cccccc;
+}*/
+.dxeButtonEditButton {
+    border: 0;
+}
+.dropdownimg{
+    background-color:none;
+}
+.dxgvSelectedRow {
+    background-color: rgba(199, 218, 229, 0.7);
+    font-weight: bold;
+    color:black;
+}
+
+.dxgvDataRow {
+    background-color: #EFF0F2;
+    height: 30px;
+}
+.dxgvDataRowAlt {
+    background-color: #dcdcdc;
+}
+.navbar-inverse {
+    border-bottom:3px solid rgb(80, 206, 208);
+}
+.dropdown-menu>li>a:hover {
+    background-color: rgb(80, 206, 208);
+}
+.dropdown-menu > li:first-child>a {
+margin-top:-6px;
+}
+.dropdown-menu > li:last-child>a {
+    margin-bottom: -6px;
+}
+/*.dropdown-menu > li > a:not(:first-child):not(:last-child){
+    margin:5px 0 5px 0 ;
+}*/
+.glyphicon-log-in:hover {
+    color: rgb(80, 206, 208);
+}
+
+
+/* Tabulator CSS */
+.tabulator {
+    border-radius: 10px;
+    background-color: #f2f2f2 !important;
+}
+.tabulator-header {
+    background-color: #3A6092 !important;
+}
+.tabulator-col {
+    background-color: #3A6092 !important;
+}
+div.tabulator-header-filter input {
+    border-radius: 7px;
+}
+
+.tabulator-col-title {
+    text-align: center;
+    font-family: IRANSansWeb_light;
+    background-color: #3A6092 !important;
+}
+
+.tabulator-cell {
+    text-align: center;
+    font-family: Vazir;
+}
+
+.tabulator-row.tabulator-selectable:hover {
+    background-color: rgba(199, 218, 229, 0.7) !important;
+    cursor: pointer;
+}
+
+.tabulator-headers {
+    color: white;
+}
+
+.tabulator-col-content {
+    background-color: #3A6092 !important;
+}
+
+.tabulator-row.selected {
+}
+
+.tabulator-row.tabulator-selected {
+    background: rgba(199, 218, 229, 0.7) !important; /*highlight selected row red, make sure it overrides existing styling */
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.tabulator-col-content {
+    font-family: IRANSansWeb_light;
+}
+
+.tabulator-footer {
+    font-family: Vazir;
+}
+
+.tabulator-menu-item {
+    font-family: Vazir;
+}
+
+    .tabulator-menu-item:hover {
+        background-color: lightblue !important;
+    }
+
+    #NewEdit{
+        display:none;
+    }
+div.tabulator-header-filter input {
+    border-radius: 7px;
+    color: black !important;
+}
+.tabulator-tableHolder {
+    height: 100% !important;
+}
+#toast-container {
+    font-family: IRANSansWeb_light;
+}
+#selectproductdetail {
+    height: 3rem;
+    width: 15rem;
+    display: block;
+    border: 1px solid #b3b3b3;
+    border-radius: 1rem;
+    font-family: Vazir;
+    text-align: center;
+}
+#selectuserbygroup {
+    height: 3rem;
+    width: 15rem;
+    display: block;
+    border: 1px solid #b3b3b3;
+    border-radius: 1rem;
+    font-family: Vazir;
+    text-align: center;
+}
+
+#NewEditRemove {
+    display: none;
+}
+#NewEditAdd {
+    display: none;
+}

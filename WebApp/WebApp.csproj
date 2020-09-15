@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1427AF23-2271-4FC1-8A7E-46A951C44D17}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApp</RootNamespace>
+    <AssemblyName>WebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.3.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.9\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.NonGeneric, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.NonGeneric.4.3.0\lib\net46\System.Collections.NonGeneric.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.DirectoryServices.AccountManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Aqua\Web\pcSizeGrip.png" />
+    <Content Include="Fonts\fontawesome-webfont.svg" />
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\Checked.png" />
+    <Content Include="Images\Checked2.png" />
+    <Content Include="Images\Checked33.png" />
+    <Content Include="Images\Checked4.png" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\intek.png" />
+    <Content Include="Images\loginback.png" />
+    <Content Include="Images\print.png" />
+    <Content Include="Images\print2.png" />
+    <Content Include="Images\Unchecked.png" />
+    <Content Include="Images\Unchecked2 %282%29.png" />
+    <Content Include="Images\Unchecked2 %283%29.png" />
+    <Content Include="Images\Unchecked2.png" />
+    <Content Include="Images\Unchecked3.png" />
+    <Content Include="Pages\ChangePassword.aspx" />
+    <Content Include="Pages\ConsumableProducts.aspx" />
+    <Content Include="Pages\Dashboard.aspx" />
+    <Content Include="Pages\Default.aspx" />
+    <Content Include="Pages\HtmlPage1.html" />
+    <Content Include="Pages\htmltest.html" />
+    <Content Include="Pages\Levels.aspx" />
+    <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\MyProducts.aspx" />
+    <Content Include="Pages\Product.aspx" />
+    <Content Include="Pages\ProductsReport.aspx" />
+    <Content Include="Pages\ProductType.aspx" />
+    <Content Include="Pages\RequestModel.aspx" />
+    <Content Include="Pages\RequestStatus.aspx" />
+    <Content Include="Pages\RequestType.aspx" />
+    <Content Include="Pages\RoleGroup.aspx" />
+    <Content Include="Pages\Roles.aspx" />
+    <Content Include="Pages\SubmitRequest.aspx" />
+    <Content Include="Pages\test.aspx" />
+    <Content Include="Pages\TestTable.html" />
+    <Content Include="Pages\UserProduct.aspx" />
+    <Content Include="Pages\Users.aspx" />
+    <Content Include="Scripts\DBTables.js" />
+    <Content Include="Scripts\push.js" />
+    <Content Include="Scripts\security.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\tabulator.min.css" />
+    <Content Include="Scripts\tabulator.min.js" />
+    <Content Include="Scripts\toastr.min.css" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\xlsx.full.min.js" />
+    <Content Include="Styles\bootstrap-rtl.min.css" />
+    <Content Include="Styles\bootstrap.min.css" />
+    <Content Include="Styles\StyleSheet.css" />
+    <Content Include="testpage.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Base\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Pages\ChangePassword\ChangePassword.cs" />
+    <Compile Include="Classes\Pages\Dashboard\RequestOperation.cs" />
+    <Compile Include="Classes\Pages\Levels\LevelsInfo.cs" />
+    <Compile Include="Classes\Pages\Login\CheckLogin.cs" />
+    <Compile Include="Classes\Pages\Privilage\Privilege.cs" />
+    <Compile Include="Classes\Pages\Product\ProductInfo.cs" />
+    <Compile Include="Classes\Pages\RequestModel\ParameterInfo.cs" />
+    <Compile Include="Classes\Pages\RequestModel\RequestModelInfo.cs" />
+    <Compile Include="Classes\Pages\RequestStatus\StatusInfo.cs" />
+    <Compile Include="Classes\Pages\RequestType\RequestTypeInfo.cs" />
+    <Compile Include="Classes\Pages\RoleGroup\RoleGroupModel.cs" />
+    <Compile Include="Classes\Pages\Roles\RoleModel.cs" />
+    <Compile Include="Classes\Pages\SubmitRequest\SubmitRequestInfo.cs" />
+    <Compile Include="Classes\Pages\Users\UserInfo.cs" />
+    <Compile Include="DC\ActiveDirectoryBusiness.cs" />
+    <Compile Include="Pages\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ConsumableProducts.aspx.cs">
+      <DependentUpon>ConsumableProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ConsumableProducts.aspx.designer.cs">
+      <DependentUpon>ConsumableProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Levels.aspx.cs">
+      <DependentUpon>Levels.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Levels.aspx.designer.cs">
+      <DependentUpon>Levels.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyProducts.aspx.cs">
+      <DependentUpon>MyProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MyProducts.aspx.designer.cs">
+      <DependentUpon>MyProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Product.aspx.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Product.aspx.designer.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductsReport.aspx.cs">
+      <DependentUpon>ProductsReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ProductsReport.aspx.designer.cs">
+      <DependentUpon>ProductsReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductType.aspx.cs">
+      <DependentUpon>ProductType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ProductType.aspx.designer.cs">
+      <DependentUpon>ProductType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RequestModel.aspx.cs">
+      <DependentUpon>RequestModel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RequestModel.aspx.designer.cs">
+      <DependentUpon>RequestModel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RequestStatus.aspx.cs">
+      <DependentUpon>RequestStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RequestStatus.aspx.designer.cs">
+      <DependentUpon>RequestStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RequestType.aspx.cs">
+      <DependentUpon>RequestType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RequestType.aspx.designer.cs">
+      <DependentUpon>RequestType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RoleGroup.aspx.cs">
+      <DependentUpon>RoleGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RoleGroup.aspx.designer.cs">
+      <DependentUpon>RoleGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Roles.aspx.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Roles.aspx.designer.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SubmitRequest.aspx.cs">
+      <DependentUpon>SubmitRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SubmitRequest.aspx.designer.cs">
+      <DependentUpon>SubmitRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserProduct.aspx.cs">
+      <DependentUpon>UserProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UserProduct.aspx.designer.cs">
+      <DependentUpon>UserProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Fonts\BNazanin.eot" />
+    <Content Include="Fonts\BNazanin.ttf" />
+    <Content Include="Fonts\BNazanin.woff" />
+    <Content Include="Fonts\BRoya.eot" />
+    <Content Include="Fonts\BRoya.ttf" />
+    <Content Include="Fonts\BRoya.woff" />
+    <Content Include="Fonts\IRANSansWeb.eot" />
+    <Content Include="Fonts\IRANSansWeb.ttf" />
+    <Content Include="Fonts\IRANSansWeb.woff" />
+    <Content Include="Fonts\IRANSansWeb_Bold.eot" />
+    <Content Include="Fonts\IRANSansWeb_Bold.ttf" />
+    <Content Include="Fonts\IRANSansWeb_Bold.woff" />
+    <Content Include="Fonts\IRANSansWeb_Light.eot" />
+    <Content Include="Fonts\IRANSansWeb_Light.ttf" />
+    <Content Include="Fonts\IRANSansWeb_Light.woff" />
+    <Content Include="Fonts\IRANSansWeb_Medium.eot" />
+    <Content Include="Fonts\IRANSansWeb_Medium.ttf" />
+    <Content Include="Fonts\IRANSansWeb_Medium.woff" />
+    <Content Include="Fonts\IRANSansWeb_UltraLight.eot" />
+    <Content Include="Fonts\IRANSansWeb_UltraLight.ttf" />
+    <Content Include="Fonts\IRANSansWeb_UltraLight.woff" />
+    <Content Include="Fonts\titr.eot" />
+    <Content Include="Fonts\titr.otf" />
+    <Content Include="Fonts\titr.ttf" />
+    <Content Include="Fonts\titr.woff" />
+    <Content Include="App_Themes\Aqua\ASPxButton.skin" />
+    <Content Include="App_Themes\Aqua\ASPxButtonEdit.skin" />
+    <Content Include="App_Themes\Aqua\ASPxCalendar.skin" />
+    <Content Include="App_Themes\Aqua\ASPxCallbackPanel.skin" />
+    <Content Include="App_Themes\Aqua\ASPxCaptcha.skin" />
+    <Content Include="App_Themes\Aqua\ASPxCheckBox.skin" />
+    <Content Include="App_Themes\Aqua\ASPxCheckBoxList.skin" />
+    <Content Include="App_Themes\Aqua\ASPxCloudControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxColorEdit.skin" />
+    <Content Include="App_Themes\Aqua\ASPxComboBox.skin" />
+    <Content Include="App_Themes\Aqua\ASPxDataView.skin" />
+    <Content Include="App_Themes\Aqua\ASPxDateEdit.skin" />
+    <Content Include="App_Themes\Aqua\ASPxDockPanel.skin" />
+    <Content Include="App_Themes\Aqua\ASPxDropDownEdit.skin" />
+    <Content Include="App_Themes\Aqua\ASPxFileManager.skin" />
+    <Content Include="App_Themes\Aqua\ASPxFilterControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxHeadline.skin" />
+    <Content Include="App_Themes\Aqua\ASPxHtmlEditor.skin" />
+    <Content Include="App_Themes\Aqua\ASPxHyperLink.skin" />
+    <Content Include="App_Themes\Aqua\ASPxLabel.skin" />
+    <Content Include="App_Themes\Aqua\ASPxListBox.skin" />
+    <Content Include="App_Themes\Aqua\ASPxLoadingPanel.skin" />
+    <Content Include="App_Themes\Aqua\ASPxMemo.skin" />
+    <Content Include="App_Themes\Aqua\ASPxMenu.skin" />
+    <Content Include="App_Themes\Aqua\ASPxNavBar.skin" />
+    <Content Include="App_Themes\Aqua\ASPxNewsControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxPageControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxPager.skin" />
+    <Content Include="App_Themes\Aqua\ASPxPivotGrid.skin" />
+    <Content Include="App_Themes\Aqua\ASPxPopupControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxPopupMenu.skin" />
+    <Content Include="App_Themes\Aqua\ASPxProgressBar.skin" />
+    <Content Include="App_Themes\Aqua\ASPxRadioButton.skin" />
+    <Content Include="App_Themes\Aqua\ASPxRadioButtonList.skin" />
+    <Content Include="App_Themes\Aqua\ASPxRatingControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxRoundPanel.skin" />
+    <Content Include="App_Themes\Aqua\ASPxSiteMapControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxSpellChecker.skin" />
+    <Content Include="App_Themes\Aqua\ASPxSpinEdit.skin" />
+    <Content Include="App_Themes\Aqua\ASPxSplitter.skin" />
+    <Content Include="App_Themes\Aqua\ASPxTabControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxTextBox.skin" />
+    <Content Include="App_Themes\Aqua\ASPxTimeEdit.skin" />
+    <Content Include="App_Themes\Aqua\ASPxTitleIndex.skin" />
+    <Content Include="App_Themes\Aqua\ASPxTrackBar.skin" />
+    <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
+    <Content Include="App_Themes\Aqua\ASPxTreeView.skin" />
+    <Content Include="App_Themes\Aqua\ASPxUploadControl.skin" />
+    <Content Include="App_Themes\Aqua\Button.skin" />
+    <Content Include="App_Themes\Aqua\ComboBox.skin" />
+    <Content Include="App_Themes\Aqua\DatePicker.skin" />
+    <Content Include="App_Themes\Aqua\GridView.skin" />
+    <Content Include="App_Themes\Aqua\HtmlEditor.skin" />
+    <Content Include="App_Themes\Aqua\Menu.skin" />
+    <Content Include="App_Themes\Aqua\NumericBox.skin" />
+    <Content Include="App_Themes\Aqua\PageControl.skin" />
+    <Content Include="App_Themes\Aqua\Panel.skin" />
+    <Content Include="App_Themes\Aqua\Popup.skin" />
+    <Content Include="App_Themes\Aqua\PopupMenu.skin" />
+    <Content Include="App_Themes\Aqua\RadioButtonList.skin" />
+    <Content Include="App_Themes\Aqua\RoundPanel.skin" />
+    <Content Include="App_Themes\Aqua\TextBox.skin" />
+    <Content Include="App_Themes\Moderno\ASPxButton.skin" />
+    <Content Include="App_Themes\Moderno\ASPxButtonEdit.skin" />
+    <Content Include="App_Themes\Moderno\ASPxCalendar.skin" />
+    <Content Include="App_Themes\Moderno\ASPxCallbackPanel.skin" />
+    <Content Include="App_Themes\Moderno\ASPxCaptcha.skin" />
+    <Content Include="App_Themes\Moderno\ASPxCheckBox.skin" />
+    <Content Include="App_Themes\Moderno\ASPxCheckBoxList.skin" />
+    <Content Include="App_Themes\Moderno\ASPxCloudControl.skin" />
+    <Content Include="App_Themes\Moderno\ASPxColorEdit.skin" />
+    <Content Include="App_Themes\Moderno\ASPxComboBox.skin" />
+    <Content Include="App_Themes\Moderno\ASPxDataView.skin" />
+    <Content Include="App_Themes\Moderno\ASPxDateEdit.skin" />
+    <Content Include="App_Themes\Moderno\ASPxDateNavigator.skin" />
+    <Content Include="App_Themes\Moderno\ASPxDockPanel.skin" />
+    <Content Include="App_Themes\Moderno\ASPxDropDownEdit.skin" />
+    <Content Include="App_Themes\Moderno\ASPxFileManager.skin" />
+    <Content Include="App_Themes\Moderno\ASPxFilterControl.skin" />
+    <Content Include="App_Themes\Moderno\ASPxFormLayout.skin" />
+    <Content Include="App_Themes\Moderno\ASPxGridLookup.skin" />
+    <Content Include="App_Themes\Moderno\ASPxGridView.skin" />
+    <Content Include="App_Themes\Moderno\ASPxHeadline.skin" />
+    <Content Include="App_Themes\Moderno\ASPxHtmlEditor.skin" />
+    <Content Include="App_Themes\Moderno\ASPxHyperLink.skin" />
+    <Content Include="App_Themes\Moderno\ASPxImageGallery.skin" />
+    <Content Include="App_Themes\Moderno\ASPxImageSlider.skin" />
+    <Content Include="App_Themes\Moderno\ASPxLabel.skin" />
+    <Content Include="App_Themes\Moderno\ASPxListBox.skin" />
+    <Content Include="App_Themes\Moderno\ASPxLoadingPanel.skin" />
+    <Content Include="App_Themes\Moderno\ASPxMemo.skin" />
+    <Content Include="App_Themes\Moderno\ASPxMenu.skin" />
+    <Content Include="App_Themes\Moderno\ASPxNavBar.skin" />
+    <Content Include="App_Themes\Moderno\ASPxNewsControl.skin" />
+    <Content Include="App_Themes\Moderno\ASPxPageControl.skin" />
+    <Content Include="App_Themes\Moderno\ASPxPager.skin" />
+    <Content Include="App_Themes\Moderno\ASPxPivotGrid.skin" />
+    <Content Include="App_Themes\Moderno\ASPxPopupControl.skin" />
+    <Content Include="App_Themes\Moderno\ASPxPopupMenu.skin" />
+    <Content Include="App_Themes\Moderno\ASPxProgressBar.skin" />
+    <Content Include="App_Themes\Moderno\ASPxRadioButton.skin" />
+    <Content Include="App_Themes\Moderno\ASPxRadioButtonList.skin" />
+    <Content Include="App_Themes\Moderno\ASPxRatingControl.skin" />
+    <Content Include="App_Themes\Moderno\ASPxRibbon.skin" />
+    <Content Include="App_Themes\Moderno\ASPxRoundPanel.skin" />
+    <Content Include="App_Themes\Moderno\ASPxScheduler.skin" />
+    <Content Include="App_Themes\Moderno\ASPxSiteMapControl.skin" />
+    <Content Include="App_Themes\Moderno\ASPxSpellChecker.skin" />
+    <Content Include="App_Themes\Moderno\ASPxSpinEdit.skin" />
+    <Content Include="App_Themes\Moderno\ASPxSplitter.skin" />
+    <Content Include="App_Themes\Moderno\ASPxTabControl.skin" />
+    <Content Include="App_Themes\Moderno\ASPxTextBox.skin" />
+    <Content Include="App_Themes\Moderno\ASPxTimeEdit.skin" />
+    <Content Include="App_Themes\Moderno\ASPxTitleIndex.skin" />
+    <Content Include="App_Themes\Moderno\ASPxTokenBox.skin" />
+    <Content Include="App_Themes\Moderno\ASPxTrackBar.skin" />
+    <Content Include="App_Themes\Moderno\ASPxTreeList.skin" />
+    <Content Include="App_Themes\Moderno\ASPxTreeView.skin" />
+    <Content Include="App_Themes\Moderno\ASPxUploadControl.skin" />
+    <Content Include="App_Themes\Moderno\ASPxValidationSummary.skin" />
+    <Content Include="App_Themes\Moderno\Button.skin" />
+    <Content Include="App_Themes\Moderno\CheckBox.skin" />
+    <Content Include="App_Themes\Moderno\ComboBox.skin" />
+    <Content Include="App_Themes\Moderno\DatePicker.skin" />
+    <Content Include="App_Themes\Moderno\GridLookup.skin" />
+    <Content Include="App_Themes\Moderno\GridView.skin" />
+    <Content Include="App_Themes\Moderno\HtmlEditor.skin" />
+    <Content Include="App_Themes\Moderno\Memo.skin" />
+    <Content Include="App_Themes\Moderno\Menu.skin" />
+    <Content Include="App_Themes\Moderno\NumericBox.skin" />
+    <Content Include="App_Themes\Moderno\PageControl.skin" />
+    <Content Include="App_Themes\Moderno\Panel.skin" />
+    <Content Include="App_Themes\Moderno\Popup.skin" />
+    <Content Include="App_Themes\Moderno\PopupMenu.skin" />
+    <Content Include="App_Themes\Moderno\RadioButtonList.skin" />
+    <Content Include="App_Themes\Moderno\RoundPanel.skin" />
+    <Content Include="App_Themes\Moderno\TextBox.skin" />
+    <Content Include="App_Themes\Moderno\TreeList.skin" />
+    <Content Include="App_Themes\Moderno\UploadControl.skin" />
+    <Content Include="Fonts\Vazir-Black.eot" />
+    <Content Include="Fonts\Vazir-Black.ttf" />
+    <Content Include="Fonts\Vazir-Black.woff" />
+    <Content Include="Fonts\Vazir-Black.woff2" />
+    <Content Include="Fonts\Vazir-Bold.eot" />
+    <Content Include="Fonts\Vazir-Bold.ttf" />
+    <Content Include="Fonts\Vazir-Bold.woff" />
+    <Content Include="Fonts\Vazir-Bold.woff2" />
+    <Content Include="Fonts\Vazir-Light.eot" />
+    <Content Include="Fonts\Vazir-Light.ttf" />
+    <Content Include="Fonts\Vazir-Light.woff" />
+    <Content Include="Fonts\Vazir-Light.woff2" />
+    <Content Include="Fonts\Vazir-Medium.eot" />
+    <Content Include="Fonts\Vazir-Medium.ttf" />
+    <Content Include="Fonts\Vazir-Medium.woff" />
+    <Content Include="Fonts\Vazir-Medium.woff2" />
+    <Content Include="Fonts\Vazir-Thin.eot" />
+    <Content Include="Fonts\Vazir-Thin.ttf" />
+    <Content Include="Fonts\Vazir-Thin.woff" />
+    <Content Include="Fonts\Vazir-Thin.woff2" />
+    <Content Include="Fonts\Vazir.eot" />
+    <Content Include="Fonts\Vazir.ttf" />
+    <Content Include="Fonts\Vazir.woff" />
+    <Content Include="Fonts\Vazir.woff2" />
+    <Content Include="Fonts\Melat.ttf" />
+    <Content Include="Fonts\Melatlight.ttf" />
+    <Content Include="Fonts\Mikhak-Black.ttf" />
+    <Content Include="Fonts\Mikhak-Black.woff" />
+    <Content Include="Fonts\Mikhak-Bold.ttf" />
+    <Content Include="Fonts\Mikhak-Bold.woff2" />
+    <Content Include="Fonts\Mikhak-Light.ttf" />
+    <Content Include="Fonts\Mikhak-Light.woff2" />
+    <Content Include="Fonts\Mikhak-Medium.ttf" />
+    <Content Include="Fonts\Mikhak-Medium.woff2" />
+    <Content Include="Fonts\Mikhak-Thin.ttf" />
+    <Content Include="Fonts\Mikhak-Thin.woff2" />
+    <Content Include="Fonts\Mikhak-VF.ttf" />
+    <Content Include="Fonts\Mikhak-VF.woff2" />
+    <Content Include="Fonts\Rezvan-fat.ttf" />
+    <Content Include="Fonts\Rezvan.ttf" />
+    <Content Include="Fonts\IRANSans.ttf" />
+    <Content Include="Fonts\IRANSans4.zip" />
+    <Content Include="Fonts\IRANSans_Bold.ttf" />
+    <Content Include="Fonts\IRANSans_Light.ttf" />
+    <Content Include="Fonts\IRANSans_Medium.ttf" />
+    <Content Include="Fonts\IRANSans_UltraLight.ttf" />
+    <Content Include="Fonts\DroidNaskh-Bold-ie.eot" />
+    <Content Include="Fonts\DroidNaskh-Bold.eot" />
+    <Content Include="Fonts\DroidNaskh-Bold.ttf" />
+    <Content Include="Fonts\DroidNaskh-Bold.woff" />
+    <Content Include="Fonts\DroidNaskh-Bold.woff2" />
+    <Content Include="Fonts\DroidNaskh-Bold1.woff" />
+    <Content Include="Fonts\DroidNaskh-Bold2.woff" />
+    <Content Include="Fonts\DroidNaskh-Bold3.woff" />
+    <Content Include="Fonts\DroidNaskh-Regular.ttf" />
+    <Content Include="Fonts\DroidNaskh-Regular.woff" />
+    <Content Include="Fonts\flat.eot" />
+    <Content Include="Fonts\flat.ttf" />
+    <Content Include="Fonts\flat.woff" />
+    <Content Include="Fonts\fontawesome-webfont.eot" />
+    <Content Include="Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Fonts\fontawesome-webfont.woff" />
+    <Content Include="Fonts\FontAwesome.otf" />
+    <Fakes Include="Fakes\System.DirectoryServices.AccountManagement.fakes" />
+    <None Include="packages.config" />
+    <Content Include="Pages\Site.Master" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Themes\Aqua\.svn\prop-base\" />
+    <Folder Include="App_Themes\Aqua\.svn\props\" />
+    <Folder Include="App_Themes\Aqua\.svn\text-base\" />
+    <Folder Include="App_Themes\Aqua\.svn\tmp\prop-base\" />
+    <Folder Include="App_Themes\Aqua\.svn\tmp\props\" />
+    <Folder Include="App_Themes\Aqua\.svn\tmp\text-base\" />
+    <Folder Include="App_Themes\Aqua\Web\.svn\prop-base\" />
+    <Folder Include="App_Themes\Aqua\Web\.svn\props\" />
+    <Folder Include="App_Themes\Aqua\Web\.svn\text-base\" />
+    <Folder Include="App_Themes\Aqua\Web\.svn\tmp\prop-base\" />
+    <Folder Include="App_Themes\Aqua\Web\.svn\tmp\props\" />
+    <Folder Include="App_Themes\Aqua\Web\.svn\tmp\text-base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{1aef7615-775e-4179-83ba-65b93d61d549}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PetaPocoDataLayer\PetaPocoDataLayer.csproj">
+      <Project>{9db65fef-b58f-4348-b0a4-5e0b69bd60d5}</Project>
+      <Name>PetaPocoDataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{e2ac9537-1fe1-4f0d-9592-b176186c81da}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebComponent\WebComponent.csproj">
+      <Project>{ca8a5d1b-9f5d-40f1-bdd5-d52ee18a1584}</Project>
+      <Name>WebComponent</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>13968</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:13968/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

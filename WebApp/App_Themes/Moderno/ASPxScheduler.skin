@@ -1,0 +1,85 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxScheduler" Assembly="DevExpress.Web.ASPxScheduler.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.XtraScheduler.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraScheduler" TagPrefix="dx" %>
+
+<dx:ASPxScheduler runat="server">
+    <ResourceColorSchemas>
+        <dx:SchedulerColorSchema Cell="255, 244, 188" CellBorder="243, 228, 177" CellBorderDark="234, 208, 152" CellLight="255, 255, 213" CellLightBorder="255, 239, 199" CellLightBorderDark="246, 219, 162"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="Control" CellBorder="ControlDark" CellBorderDark="ControlDark" CellLight="Window" CellLightBorder="ControlDark" CellLightBorderDark="ControlDark"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="179, 212, 151" CellBorder="168, 203, 138" CellBorderDark="140, 180, 104" CellLight="213, 236, 188" CellLightBorder="205, 228, 180" CellLightBorderDark="186, 209, 162"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="139, 158, 191" CellBorder="128, 147, 181" CellBorderDark="97, 116, 152" CellLight="207, 216, 230" CellLightBorder="193, 201, 219" CellLightBorderDark="161, 175, 204"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="190, 134, 161" CellBorder="180, 124, 149" CellBorderDark="156, 101, 122" CellLight="227, 203, 214" CellLightBorder="218, 189, 199" CellLightBorderDark="197, 163, 171"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="137, 177, 167" CellBorder="123, 168, 156" CellBorderDark="84, 142, 128" CellLight="193, 214, 209" CellLightBorder="174, 202, 195" CellLightBorderDark="145, 182, 173"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="247, 180, 127" CellBorder="235, 167, 113" CellBorderDark="202, 131, 71" CellLight="250, 208, 174" CellLightBorder="238, 196, 163" CellLightBorderDark="225, 166, 118"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="221, 140, 142" CellBorder="210, 129, 131" CellBorderDark="179, 100, 101" CellLight="239, 200, 201" CellLightBorder="233, 187, 189" CellLightBorderDark="222, 164, 166"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="137, 150, 132" CellBorder="129, 138, 122" CellBorderDark="102, 100, 89" CellLight="208, 216, 203" CellLightBorder="196, 207, 191" CellLightBorderDark="172, 181, 169"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="0, 199, 200" CellBorder="0, 186, 187" CellBorderDark="0, 151, 153" CellLight="168, 236, 236" CellLightBorder="144, 226, 227" CellLightBorderDark="84, 203, 204"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="168, 148, 207" CellBorder="155, 136, 194" CellBorderDark="118, 99, 155" CellLight="221, 213, 236" CellLightBorder="210, 199, 230" CellLightBorderDark="185, 169, 216"></dx:SchedulerColorSchema>
+        <dx:SchedulerColorSchema Cell="204, 204, 204" CellBorder="189, 189, 189" CellBorderDark="121, 121, 121" CellLight="230, 230, 230" CellLightBorder="204, 204, 204" CellLightBorderDark="177, 177, 177"></dx:SchedulerColorSchema>
+    </ResourceColorSchemas>
+
+    <Views>
+        <DayView>
+            <TimeSlots>
+                <dx:TimeSlot Value="01:00:00" DisplayName="60 Minutes" MenuCaption="6&amp;0 Minutes"></dx:TimeSlot>
+                <dx:TimeSlot Value="00:30:00" DisplayName="30 Minutes" MenuCaption="&amp;30 Minutes"></dx:TimeSlot>
+                <dx:TimeSlot Value="00:15:00" DisplayName="15 Minutes" MenuCaption="&amp;15 Minutes"></dx:TimeSlot>
+                <dx:TimeSlot Value="00:10:00" DisplayName="10 Minutes" MenuCaption="10 &amp;Minutes"></dx:TimeSlot>
+                <dx:TimeSlot Value="00:06:00" DisplayName="6 Minutes" MenuCaption="&amp;6 Minutes"></dx:TimeSlot>
+                <dx:TimeSlot DisplayName="5 Minutes" MenuCaption="&amp;5 Minutes"></dx:TimeSlot>
+            </TimeSlots>
+            <TimeRulers>
+                <dx:TimeRuler TimeZone-Id="Russian Standard Time"></dx:TimeRuler>
+            </TimeRulers>
+        </DayView>
+
+        <WorkWeekView>
+            <TimeSlots>
+                <dx:TimeSlot Value="01:00:00" DisplayName="60 Minutes" MenuCaption="6&amp;0 Minutes"></dx:TimeSlot>
+                <dx:TimeSlot Value="00:30:00" DisplayName="30 Minutes" MenuCaption="&amp;30 Minutes"></dx:TimeSlot>
+                <dx:TimeSlot Value="00:15:00" DisplayName="15 Minutes" MenuCaption="&amp;15 Minutes"></dx:TimeSlot>
+                <dx:TimeSlot Value="00:10:00" DisplayName="10 Minutes" MenuCaption="10 &amp;Minutes"></dx:TimeSlot>
+                <dx:TimeSlot Value="00:06:00" DisplayName="6 Minutes" MenuCaption="&amp;6 Minutes"></dx:TimeSlot>
+                <dx:TimeSlot DisplayName="5 Minutes" MenuCaption="&amp;5 Minutes"></dx:TimeSlot>
+            </TimeSlots>
+            <TimeRulers>
+                <dx:TimeRuler TimeZone-Id="Russian Standard Time"></dx:TimeRuler>
+            </TimeRulers>
+        </WorkWeekView>
+
+        <TimelineView>
+            <Scales>
+                <dx:TimeScaleYear Enabled="False"></dx:TimeScaleYear>
+                <dx:TimeScaleQuarter Enabled="False"></dx:TimeScaleQuarter>
+                <dx:TimeScaleMonth Enabled="False"></dx:TimeScaleMonth>
+                <dx:TimeScaleWeek></dx:TimeScaleWeek>
+                <dx:TimeScaleDay></dx:TimeScaleDay>
+                <dx:TimeScaleHour Enabled="False"></dx:TimeScaleHour>
+                <dx:TimeScale15Minutes Enabled="False"></dx:TimeScale15Minutes>
+            </Scales>
+        </TimelineView>
+    </Views>
+
+    <Styles SelectionColor="Gainsboro" CssPostfix="Moderno" CssFilePath="~/App_Themes/Moderno/{0}/styles.css">
+        <ResourceNavigator>
+            <ComboBox Spacing="0px"></ComboBox>
+        </ResourceNavigator>
+
+        <ViewSelector ButtonSpacing="2px"></ViewSelector>
+        <ViewNavigator ButtonSpacing="2px"></ViewNavigator>
+
+        <Menu>
+            <SubMenu GutterWidth="0px"></SubMenu>
+        </Menu>
+
+        <FormEditors ButtonEditCellSpacing="0">
+            <CalendarHeader Spacing="1px"></CalendarHeader>
+            <CalendarFooter Spacing="16px"></CalendarFooter>
+        </FormEditors>
+    </Styles>
+
+    <Images SpriteCssFilePath="~/App_Themes/Moderno/{0}/sprite.css">
+        <LoadingPanel Url="Scheduler/Loading.gif"></LoadingPanel>
+    </Images>
+</dx:ASPxScheduler>
+
