@@ -109,6 +109,7 @@
     <Content Include="Images\Unchecked2 %283%29.png" />
     <Content Include="Images\Unchecked2.png" />
     <Content Include="Images\Unchecked3.png" />
+    <Content Include="Pages\AATESTAA.html" />
     <Content Include="Pages\ChangePassword.aspx" />
     <Content Include="Pages\ConsumableProducts.aspx" />
     <Content Include="Pages\Dashboard.aspx" />
@@ -130,6 +131,7 @@
     <Content Include="Pages\test.aspx" />
     <Content Include="Pages\TestGitPage.html" />
     <Content Include="Pages\TestTable.html" />
+    <Content Include="Pages\Testtt.html" />
     <Content Include="Pages\UserProduct.aspx" />
     <Content Include="Pages\Users.aspx" />
     <Content Include="Scripts\DBTables.js" />
