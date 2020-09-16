@@ -22,7 +22,7 @@
                     if (data.d[0] == '1') {
                         Cancel();
                     }
-                    else
+                    else 
                         ShowFailure(data.d[1]);
                     return;
                 },
