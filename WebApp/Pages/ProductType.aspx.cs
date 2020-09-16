@@ -48,15 +48,32 @@ namespace WebApp.Pages
 
         }
         [WebMethod]
-        public static string[] GetTableRows()
+        public static string[] GetTableRows(string Info)
         {
             try
             {
-                var ProductInfoBiz = Business.FacadeAutomation.GetProductTypeBusiness();
-                var q = ProductInfoBiz.GetAll(300);
-                q.OrderBy(Models.Generated.AutomationDB.Automation.ProductType.Columns.ID, "DESC");
-                var ProductInfo = ProductInfoBiz.Fetch(q).ToList();
+                long ClassificationID = 0;
+                switch (Info)
+                {
+                    case "electro":
+                        ClassificationID = 1;
+                        break;
+                    case "asasie":
+                        ClassificationID = 2;
+                        break;
+                    case "sayer":
+                        ClassificationID = 3;
+                        break;
+                    case "all":
+                        ClassificationID = 0;
+                        break;
+                    default:
+                        ClassificationID = 0;
+                        break;
+                }
 
+                var ProductInfo = Business.FacadeAutomation.GetVwProductTypeDetailBusiness().GetByProductClassificationID(ClassificationID);
+              
                 var json = JsonConvert.SerializeObject(ProductInfo);
 
                 return new string[2] { "1", json };
@@ -194,6 +211,7 @@ namespace WebApp.Pages
                 var ProductInfo = Business.FacadeAutomation.GetProductTypeBusiness().GetByID(Product.ID.ToLong());
                 if (ProductInfo == null)
                     ProductInfo = new Models.Generated.AutomationDB.Automation.ProductType();
+                ProductInfo.ProductClassificationID = Product.ProductClassificationID;
                 ProductInfo.ProductName = Product.ProductName;
                 ProductInfo.Save();
                 return new string[2] { "1", "Success" };

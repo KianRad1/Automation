@@ -49,6 +49,15 @@ namespace WebApp.Pages {
         protected global::WebComponent.TextBox txtProductName;
         
         /// <summary>
+        /// cmbproductClassification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebComponent.ComboBox cmbproductClassification;
+        
+        /// <summary>
         /// btnNewBrand control.
         /// </summary>
         /// <remarks>
@@ -83,5 +92,23 @@ namespace WebApp.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebComponent.TextBox txtProductBrand;
+        
+        /// <summary>
+        /// hdfProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebComponent.HiddenField hdfProduct;
+        
+        /// <summary>
+        /// odsproductclassification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsproductclassification;
     }
 }

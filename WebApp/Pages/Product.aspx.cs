@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using WebApp.Classes.Base;
 using WebApp.Classes.Pages.Product;
 using Utilities;
+using Models.Generated.AutomationDB.Automation;
 
 namespace WebApp.Pages
 {
@@ -23,13 +24,35 @@ namespace WebApp.Pages
         }
         #region WebMethods
         [WebMethod]
-        public static string[] GetTableRows()
+        public static string[] GetTableRows(string Info)
         {
             try
             {
+                long ClassificationID = 0;
+                switch (Info)
+                {
+                    case "electro":
+                        ClassificationID = 1;
+                        break;
+                    case "asasie":
+                        ClassificationID = 2;
+                        break;
+                    case "sayer":
+                        ClassificationID = 3;
+                        break;
+                    case "all":
+                        ClassificationID = 0;
+                        break;
+                    default:
+                        ClassificationID = 0;
+                        break;
+                }
+
                 var ProductBiz = Business.FacadeAutomation.GetVwProductDetailBusiness();
                 var q = ProductBiz.GetAll(300);
-                q.OrderBy(Models.Generated.AutomationDB.Automation.VwProductDetail.Columns.ID, "DESC");
+                if (ClassificationID != 0)
+                    q.And(VwProductDetail.Columns.ProductClassificationID, ClassificationID);
+                q.OrderBy(VwProductDetail.Columns.ID, "DESC");
 
                 var ProductInfo = ProductBiz.Fetch(q).ToList();
 

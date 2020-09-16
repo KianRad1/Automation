@@ -11,12 +11,18 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <script>
         $(document).ready(function () {
-            CreateTable();
+            CreateTable('all');
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var target = $(e.target).attr("id") // activated tab
+                hdfAction.Set("currenttab", target);
+                CreateTable(target);
+            });
         });
-        function CreateTable() {
+        function CreateTable(classification) {
             $.ajax({
                 type: 'POST',
                 url: 'Product.aspx/GetTableRows',
+                data: JSON.stringify({ Info: classification }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "JSON"
             }).then(
@@ -28,6 +34,7 @@
                             { title: "شناسه", field: "ID", width: 100, headerFilter: "input" },
                             { title: "نام محصول", field: "ProductName", headerFilter: "input" },
                             { title: "برند", field: "ProductBrand", headerFilter: "input" },
+                            { title: "نوع وسیله", field: "ProductClassification", headerFilter: "input" },
                             //{ title: "تعداد", field: "ProductCount", headerFilter: "input" },
                             { title: "شماره سریال", field: "SerialNo", headerFilter: "input" },
                             { title: "وضعیت", field: "ProductStatus", headerFilter: "input" },
@@ -119,7 +126,11 @@
                 function (data) {
                     if (data.d[0] == '1') {
                         Cancel();
-                        CreateTable();
+                        var currenttab = hdfAction.Get("currenttab");
+                        if (typeof currenttab == 'undefined')
+                            CreateTable('all');
+                        else
+                            CreateTable(currenttab);
                         ShowSuccess();
                     }
                     else
@@ -161,7 +172,11 @@
                 function (data) {
                     if (data.d[0] == '1') {
                         Cancel();
-                        CreateTable();
+                        var currenttab = hdfAction.Get("currenttab");
+                        if (typeof currenttab == 'undefined')
+                            CreateTable('all');
+                        else
+                            CreateTable(currenttab);
                         ShowSuccess();
                     }
                     else
@@ -195,107 +210,129 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-xs-12 col-md-2"></div>
-            <div class="col-xs-12 col-md-8">
-                <br />
-                <div class="well">
-                    <div style="display: inline-flex; margin-top: 7px;">
-                        <div style="margin-left: 10px;">
-                            <Aut:Button ID="btnNew" ClientInstanceName="btnNew" ClientIDMode="Static" runat="server" Text="جدید" CssClass="Newbtn">
-                            </Aut:Button>
-                        </div>
-                        <div>
-                            <div class="Action-Group">
-                                <Aut:Label ID="lblAction" runat="server" Text="عملیات" CssClass="Action-Label" />
-                                <div class="Action-Combo">
-                                    <Aut:ComboBox ID="cmbAction" runat="server" ClientInstanceName="cmbAction" ClientEnabled="False" isaction="true" Height="35px">
-                                        <ClientSideEvents SelectedIndexChanged="actions_SelectedIndexChanged" />
-                                    </Aut:ComboBox>
+            <div class="col-xs-12 col-md-5"></div>
+            <div class="col-xs-12 col-md-3">
+                <ul class="nav nav-tabs" style="font-family: IRANSansWeb_Bold">
+                    <li class="active"><a id="all" data-toggle="tab" href="#home">تمام وسایل</a></li>
+                    <li><a id="electro" data-toggle="tab" href="#home">وسایل الکترونیکی</a></li>
+                    <li><a id="asasie" data-toggle="tab" href="#home">اموال و اثاثه</a></li>
+                    <li><a id="sayer" data-toggle="tab" href="#home">سایر</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-4"></div>
+
+        </div>
+    </div>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-2"></div>
+                    <div class="col-xs-12 col-md-8">
+                        <br />
+                        <div class="well">
+                            <div style="display: inline-flex; margin-top: 7px;">
+                                <div style="margin-left: 10px;">
+                                    <Aut:Button ID="btnNew" ClientInstanceName="btnNew" ClientIDMode="Static" runat="server" Text="جدید" CssClass="Newbtn">
+                                    </Aut:Button>
+                                    <Aut:Button ID="downloadxlsx" ClientInstanceName="downloadxlsx" ClientIDMode="Static" Width="150" runat="server" Text="دریافت اکسل" CssClass="Newbtn">
+                                    </Aut:Button>
+                                </div>
+                                <div>
+                                    <div class="Action-Group">
+                                        <Aut:Label ID="lblAction" runat="server" Text="عملیات" CssClass="Action-Label" />
+                                        <div class="Action-Combo">
+                                            <Aut:ComboBox ID="cmbAction" runat="server" ClientInstanceName="cmbAction" ClientEnabled="False" isaction="true" Height="35px">
+                                                <ClientSideEvents SelectedIndexChanged="actions_SelectedIndexChanged" />
+                                            </Aut:ComboBox>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="row" style="margin-top: 10px;">
+                            </div>
+                            <div id="ProductTables"></div>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 10px;">
-                    </div>
-                    <div id="ProductTables"></div>
+                    <div class="col-xs-12 col-md-2"></div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-md-2"></div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-xs-12 col-md-2"></div>
-            <div class="col-xs-12 col-md-8">
-                <div id="NewEdit" class="well">
-                    <div class="form">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <Aut:Label runat="server" Text="نام وسیله" />
-                                <Aut:ComboBox ID="cmbproducttype" ClientInstanceName="cmbproducttype" runat="server" ValueField="ID" TextField="ProductName" DataSourceID="odsproducttype" ValueType="System.Int64">
-                                    <ClientSideEvents SelectedIndexChanged="cmbproducttype_SelectedIndexChanged" />
-                                    <ValidationSettings RequiredField-IsRequired="true">
-                                        <RequiredField IsRequired="True"></RequiredField>
-                                    </ValidationSettings>
-                                </Aut:ComboBox>
-                            </div>
-                            <div class="col-md-2">
-                                <Aut:Label runat="server" Text="برند وسیله" />
-                                <Aut:ComboBox ID="cmbproductbrand" ClientInstanceName="cmbproductbrand" runat="server" ValueField="ID" TextField="_ProductBrand" OnCallback="cmbproductbrand_Callback" DataSourceID="odsproductbrand" ValueType="System.Int64">
-                                    <ValidationSettings RequiredField-IsRequired="true">
-                                        <RequiredField IsRequired="True"></RequiredField>
-                                    </ValidationSettings>
-                                </Aut:ComboBox>
-                            </div>
-                            <%--    <div class="col-md-2">
+                <br />
+                <div class="row">
+                    <div class="col-xs-12 col-md-2"></div>
+                    <div class="col-xs-12 col-md-8">
+                        <div id="NewEdit" class="well">
+                            <div class="form">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <Aut:Label runat="server" Text="نام وسیله" />
+                                        <Aut:ComboBox ID="cmbproducttype" ClientInstanceName="cmbproducttype" runat="server" ValueField="ID" TextField="ProductName" DataSourceID="odsproducttype" ValueType="System.Int64">
+                                            <ClientSideEvents SelectedIndexChanged="cmbproducttype_SelectedIndexChanged" />
+                                            <ValidationSettings RequiredField-IsRequired="true">
+                                                <RequiredField IsRequired="True"></RequiredField>
+                                            </ValidationSettings>
+                                        </Aut:ComboBox>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <Aut:Label runat="server" Text="برند وسیله" />
+                                        <Aut:ComboBox ID="cmbproductbrand" ClientInstanceName="cmbproductbrand" runat="server" ValueField="ID" TextField="_ProductBrand" OnCallback="cmbproductbrand_Callback" DataSourceID="odsproductbrand" ValueType="System.Int64">
+                                            <ValidationSettings RequiredField-IsRequired="true">
+                                                <RequiredField IsRequired="True"></RequiredField>
+                                            </ValidationSettings>
+                                        </Aut:ComboBox>
+                                    </div>
+                                    <%--    <div class="col-md-2">
                                 <Aut:Label runat="server" Text="مدل" />
                                 <Aut:TextBox runat="server" ID="txtProductmodel" ClientInstanceName="txtProductmodel" validationgroup="NewEdit">
                                 </Aut:TextBox>
                             </div>--%>
-                            <%-- <div class="col-md-2">
+                                    <%-- <div class="col-md-2">
                                 <Aut:Label runat="server" Text="تعداد" />
                                 <Aut:TextBox runat="server" ID="txtProductcount" ClientInstanceName="txtProductcount" validationgroup="NewEdit">
                                     <ValidationSettings RequiredField-IsRequired="true" />
                                 </Aut:TextBox>
                             </div>--%>
-                            <div class="col-md-2">
-                                <Aut:Label runat="server" Text="سریال" />
-                                <Aut:TextBox runat="server" ID="txtSerialNo" ClientInstanceName="txtSerialNo" validationgroup="NewEdit">
-                                    <ValidationSettings RequiredField-IsRequired="true" />
-                                </Aut:TextBox>
-                            </div>
-                            <div class="col-md-2">
-                                <Aut:Label runat="server" Text="وضعیت وسیله" />
-                                <Aut:ComboBox ID="cmbproductstatus" ClientInstanceName="cmbproductstatus" runat="server" ValueField="ID" TextField="Title" DataSourceID="odsproductstatus" ValueType="System.Int64">
-                                    <ValidationSettings RequiredField-IsRequired="true">
-                                        <RequiredField IsRequired="True"></RequiredField>
-                                    </ValidationSettings>
-                                </Aut:ComboBox>
-                            </div>
-                            <div class="col-md-2">
-                                <Aut:Label runat="server" Text="توضیحات" />
-                                <Aut:Memo runat="server" ID="txtDescription" ClientInstanceName="txtDescription" validationgroup="NewEdit">
-                                </Aut:Memo>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row"></div>
-                        <br />
+                                    <div class="col-md-2">
+                                        <Aut:Label runat="server" Text="سریال" />
+                                        <Aut:TextBox runat="server" ID="txtSerialNo" ClientInstanceName="txtSerialNo" validationgroup="NewEdit">
+                                            <ValidationSettings RequiredField-IsRequired="true" />
+                                        </Aut:TextBox>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <Aut:Label runat="server" Text="وضعیت وسیله" />
+                                        <Aut:ComboBox ID="cmbproductstatus" ClientInstanceName="cmbproductstatus" runat="server" ValueField="ID" TextField="Title" DataSourceID="odsproductstatus" ValueType="System.Int64">
+                                            <ValidationSettings RequiredField-IsRequired="true">
+                                                <RequiredField IsRequired="True"></RequiredField>
+                                            </ValidationSettings>
+                                        </Aut:ComboBox>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <Aut:Label runat="server" Text="توضیحات" />
+                                        <Aut:Memo runat="server" ID="txtDescription" ClientInstanceName="txtDescription" validationgroup="NewEdit">
+                                        </Aut:Memo>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row"></div>
+                                <br />
 
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-2">
-                                <Aut:Button runat="server" Text="ذخیره" ClientSideEvents-Click="Save" CssClass="ProductSavebtn" />
-                            </div>
-                            <div class="col-md-2">
-                                <Aut:Button runat="server" Text="انصراف" ClientSideEvents-Click="Cancel" CssClass="ProductCancelbtn" />
-                            </div>
-                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-2">
+                                        <Aut:Button runat="server" Text="ذخیره" ClientSideEvents-Click="Save" CssClass="ProductSavebtn" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <Aut:Button runat="server" Text="انصراف" ClientSideEvents-Click="Cancel" CssClass="ProductCancelbtn" />
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-xs-12 col-md-2"></div>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-2"></div>
         </div>
     </div>
     <Aut:HiddenField ID="hdfTypeAction" ClientInstanceName="hdfTypeAction" runat="server" />

@@ -723,6 +723,47 @@ namespace Models.Generated.AutomationDB.Automation
 
     
 
+	[TableName("dbo.ProductClassification")]
+
+
+
+	[PrimaryKey("ID")]
+
+
+
+
+	[ExplicitColumns]
+
+    public partial class ProductClassification : AutomationDB.Record<ProductClassification>  
+    {
+
+	public struct Columns
+		{
+		
+
+		public static String  ID  = @"ID";
+		
+
+		public static String  Title  = @"Title";
+		
+		}
+
+
+
+
+		[Column] public long ID { get; set; }
+ 
+  
+
+
+
+		[Column] public string Title { get; set; }
+ 
+  
+	}  
+
+    
+
 	[TableName("dbo.Products")]
 
 
@@ -873,6 +914,9 @@ namespace Models.Generated.AutomationDB.Automation
 
 		public static String  ProductName  = @"ProductName";
 		
+
+		public static String  ProductClassificationID  = @"ProductClassificationID";
+		
 		}
 
 
@@ -885,6 +929,12 @@ namespace Models.Generated.AutomationDB.Automation
 
 
 		[Column] public string ProductName { get; set; }
+ 
+  
+
+
+
+		[Column] public long? ProductClassificationID { get; set; }
  
   
 	}  
@@ -2163,6 +2213,12 @@ namespace Models.Generated.AutomationDB.Automation
 
 		public static String  ProductBrand  = @"ProductBrand";
 		
+
+		public static String  ProductClassificationID  = @"ProductClassificationID";
+		
+
+		public static String  ProductClassification  = @"ProductClassification";
+		
 		}
 
 
@@ -2205,6 +2261,82 @@ namespace Models.Generated.AutomationDB.Automation
 
 
 		[Column] public string ProductBrand { get; set; }
+ 
+  
+
+
+
+		[Column] public long? ProductClassificationID { get; set; }
+ 
+  
+
+
+
+		[Column] public string ProductClassification { get; set; }
+ 
+  
+	}  
+
+    
+
+	[TableName("dbo.VwProductTypeDetail")]
+
+
+
+
+	[ExplicitColumns]
+
+    public partial class VwProductTypeDetail : AutomationDB.Record<VwProductTypeDetail>  
+    {
+
+	public struct Columns
+		{
+		
+
+		public static String  ID  = @"ID";
+		
+
+		public static String  ProductName  = @"ProductName";
+		
+
+		public static String  ProductClassificationID  = @"ProductClassificationID";
+		
+
+		public static String  ProductClassification  = @"ProductClassification";
+		
+
+		public static String  ProductCount  = @"ProductCount";
+		
+		}
+
+
+
+
+		[Column] public long ID { get; set; }
+ 
+  
+
+
+
+		[Column] public string ProductName { get; set; }
+ 
+  
+
+
+
+		[Column] public long? ProductClassificationID { get; set; }
+ 
+  
+
+
+
+		[Column] public string ProductClassification { get; set; }
+ 
+  
+
+
+
+		[Column] public int? ProductCount { get; set; }
  
   
 	}  
@@ -2597,6 +2729,15 @@ namespace Models.Generated.AutomationDB.Automation
 		public static String  Description  = @"Description";
 		
 
+		public static String  ProductBrand  = @"ProductBrand";
+		
+
+		public static String  ProductClassificationID  = @"ProductClassificationID";
+		
+
+		public static String  ProductClassification  = @"ProductClassification";
+		
+
 		public static String  Username  = @"Username";
 		
 
@@ -2662,6 +2803,24 @@ namespace Models.Generated.AutomationDB.Automation
 
 
 		[Column] public string Description { get; set; }
+ 
+  
+
+
+
+		[Column] public string ProductBrand { get; set; }
+ 
+  
+
+
+
+		[Column] public long? ProductClassificationID { get; set; }
+ 
+  
+
+
+
+		[Column] public string ProductClassification { get; set; }
  
   
 

@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <script>
         $(document).ready(function () {
-            CreateTable();
+            CreateTable('all');
             $("#btnNewBrand").click(function () {
                 if (btnNewBrand.GetEnabled()) {
                     ClearBrand();
@@ -15,11 +15,17 @@
                     $("#NewEditBrand").slideDown('fast');
                 }
             });
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var target = $(e.target).attr("id") // activated tab
+                hdfAction.Set("currenttab", target);
+                CreateTable(target);
+            });
         });
-        function CreateTable() {
+        function CreateTable(classification) {
             $.ajax({
                 type: 'POST',
                 url: 'ProductType.aspx/GetTableRows',
+                data: JSON.stringify({ Info: classification }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "JSON"
             }).then(
@@ -29,8 +35,10 @@
                         var tabledata = $.parseJSON(data.d[1]);
                         var tablecolumns = [
                             { title: "شناسه", field: "ID", width: 100, headerFilter: "input" },
-                            { title: "نام محصول", field: "ProductName", headerFilter: "input" },
-                        ];
+                            { title: "نام وسیله", field: "ProductName", headerFilter: "input" },
+                            { title: "نوع وسیله", field: "ProductClassification", headerFilter: "input" },
+                            { title: "تعداد وسیله", field: "ProductCount", headerFilter: "input" },
+                        ]; 
                         CreateDBTable(tabledata, tablecolumns, tablediv);
                     }
                     else
@@ -114,7 +122,7 @@
         function FetchInfo(rowid) {
             $.ajax({
                 type: 'POST',
-                url: 'Product.aspx/GetInfo',
+                url: 'ProductType.aspx/GetInfo',
                 data: JSON.stringify({ Info: rowid }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "JSON"
@@ -123,6 +131,7 @@
                     if (data.d[0] == '1') {
                         var product = $.parseJSON(data.d[1]);
                         txtProductName.SetText(product.ProductName);
+                        cmbproductClassification.SetValue(product.ProductClassificationID)
                         hdfAction.Set('ID', rowid);
                         btnNew.SetEnabled(false);
                         btnNew.SetVisible(false)
@@ -144,10 +153,15 @@
                 ShowFailure("نام محصول وارد نشده است");
                 return;
             }
+            if (cmbproductClassification.GetValue() == null) {
+                ShowFailure("دسته بندی محصول وارد نشده است");
+                return;
+            }
             var ProductInfo = {};
             if (hdfAction.Get('ID') != null)
                 ProductInfo.ID = hdfAction.Get('ID');
             ProductInfo.ProductName = txtProductName.GetValue();
+            ProductInfo.ProductClassificationID = cmbproductClassification.GetValue();
             ProductInfo = JSON.stringify(ProductInfo);
             $.ajax({
                 type: 'POST',
@@ -159,7 +173,11 @@
                 function (data) {
                     if (data.d[0] == '1') {
                         Cancel();
-                        CreateTable();
+                        var currenttab = hdfAction.Get("currenttab");
+                        if (typeof currenttab == 'undefined')
+                            CreateTable('all');
+                        else
+                            CreateTable(currenttab);
                         ShowSuccess();
                     }
                     else
@@ -231,6 +249,7 @@
         function Clear() {
             $('#NewEdit').slideUp('fast');
             cmbAction.SetValue(null);
+            cmbproductClassification.SetValue(null);
             txtProductName.SetValue("");
             cmbAction.SetEnabled(false);
             btnNew.SetEnabled(true);
@@ -303,7 +322,11 @@
                 function (data) {
                     if (data.d[0] == '1') {
                         Cancel();
-                        CreateTable();
+                        var currenttab = hdfAction.Get("currenttab");
+                        if (typeof currenttab == 'undefined')
+                            CreateTable('all');
+                        else
+                            CreateTable(currenttab);
                         ShowSuccess();
                     }
                     else
@@ -319,129 +342,160 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-xs-12 col-md-2"></div>
-            <div class="col-xs-12 col-md-8">
+            <div class="col-xs-12 col-md-5"></div>
+            <div class="col-xs-12 col-md-3">
+                <ul class="nav nav-tabs" style="font-family: IRANSansWeb_Bold">
+                    <li class="active"><a id="all" data-toggle="tab" href="#home">تمام وسایل</a></li>
+                    <li><a id="electro" data-toggle="tab" href="#home">وسایل الکترونیکی</a></li>
+                    <li><a id="asasie" data-toggle="tab" href="#home">اموال و اثاثه</a></li>
+                    <li><a id="sayer" data-toggle="tab" href="#home">سایر</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-4"></div>
+
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-2"></div>
+                    <div class="col-xs-12 col-md-8">
+                        <br />
+                        <div class="well">
+                            <div style="display: inline-flex; margin-top: 7px;">
+                                <div style="margin-left: 10px;">
+                                    <Aut:Button ID="btnNew" ClientInstanceName="btnNew" ClientIDMode="Static" runat="server" Text="جدید" CssClass="Newbtn">
+                                    </Aut:Button>
+                                </div>
+                                <div>
+                                    <div class="Action-Group">
+                                        <Aut:Label ID="lblAction" runat="server" Text="عملیات" CssClass="Action-Label" />
+                                        <div class="Action-Combo">
+                                            <Aut:ComboBox ID="cmbAction" runat="server" ClientInstanceName="cmbAction" ClientEnabled="False" isaction="true" Height="35px">
+                                                <ClientSideEvents SelectedIndexChanged="actions_SelectedIndexChanged" />
+                                            </Aut:ComboBox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px;">
+                            </div>
+                            <div id="ProductTables"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-2"></div>
+                </div>
                 <br />
-                <div class="well">
-                    <div style="display: inline-flex; margin-top: 7px;">
-                        <div style="margin-left: 10px;">
-                            <Aut:Button ID="btnNew" ClientInstanceName="btnNew" ClientIDMode="Static" runat="server" Text="جدید" CssClass="Newbtn">
-                            </Aut:Button>
-                        </div>
-                        <div>
-                            <div class="Action-Group">
-                                <Aut:Label ID="lblAction" runat="server" Text="عملیات" CssClass="Action-Label" />
-                                <div class="Action-Combo">
-                                    <Aut:ComboBox ID="cmbAction" runat="server" ClientInstanceName="cmbAction" ClientEnabled="False" isaction="true" Height="35px">
-                                        <ClientSideEvents SelectedIndexChanged="actions_SelectedIndexChanged" />
-                                    </Aut:ComboBox>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 10px;">
-                    </div>
-                    <div id="ProductTables"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-2"></div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-xs-12 col-md-2"></div>
-            <div class="col-xs-12 col-md-8">
-                <div id="NewEdit" class="well">
-                    <div class="form">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <Aut:Label runat="server" Text="نام وسیله" />
-                                <Aut:TextBox runat="server" ID="txtProductName" ClientInstanceName="txtProductName" validationgroup="NewEdit">
-                                </Aut:TextBox>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row"></div>
-                        <br />
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-2">
-                                <Aut:Button runat="server" Text="ذخیره" ClientSideEvents-Click="Save" CssClass="ProductSavebtn" />
-                            </div>
-                            <div class="col-md-2">
-                                <Aut:Button runat="server" Text="انصراف" ClientSideEvents-Click="Cancel" CssClass="ProductCancelbtn" />
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-2"></div>
-        </div>
-        <div id="popupBrands" class="modal fade modal-wide" tabindex="-1" role="dialog" aria-labelledby="popupBrands" aria-hidden="true" style="display: none; right: 25%">
-            <div class="modal-dialog col-lg-8">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                        <Aut:Label runat="server" Font-Size="24px" Text="برند ها" />
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div style="padding: 0 5% 0 5%;">
-                                <div style="display: inline-flex; margin-top: 7px;">
-                                    <div style="margin-left: 10px;">
-                                        <Aut:Button ID="btnNewBrand" ClientInstanceName="btnNewBrand" ClientIDMode="Static" runat="server" Text="جدید" CssClass="Newbtn">
-                                        </Aut:Button>
+                <div class="row">
+                    <div class="col-xs-12 col-md-2"></div>
+                    <div class="col-xs-12 col-md-8">
+                        <div id="NewEdit" class="well">
+                            <div class="form">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <Aut:Label runat="server" Text="نام وسیله" />
+                                        <Aut:TextBox runat="server" ID="txtProductName" ClientInstanceName="txtProductName" validationgroup="NewEdit">
+                                        </Aut:TextBox>
                                     </div>
-                                    <div>
-                                        <div class="Action-Group">
-                                            <Aut:Label ID="lblActionBrand" runat="server" Text="عملیات" CssClass="Action-Label" />
-                                            <div class="Action-Combo">
-                                                <Aut:ComboBox ID="cmbBrandAction" runat="server" ClientInstanceName="cmbBrandAction" ClientEnabled="False" isaction="true" Height="35px">
-                                                    <ClientSideEvents SelectedIndexChanged="brandactions_SelectedIndexChanged" />
-                                                </Aut:ComboBox>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-2">
+                                        <Aut:Label runat="server" Text="نوع وسیله" />
+                                        <Aut:ComboBox ID="cmbproductClassification" ClientInstanceName="cmbproductClassification" runat="server" ValueField="ID" TextField="Title" DataSourceID="odsproductclassification" ValueType="System.Int64">
+                                            <ValidationSettings RequiredField-IsRequired="true">
+                                                <RequiredField IsRequired="True"></RequiredField>
+                                            </ValidationSettings>
+                                        </Aut:ComboBox>
                                     </div>
                                 </div>
-                                <div class="row" style="margin-top: 10px;">
+                                <br />
+                                <div class="row"></div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-2">
+                                        <Aut:Button runat="server" Text="ذخیره" ClientSideEvents-Click="Save" CssClass="ProductSavebtn" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <Aut:Button runat="server" Text="انصراف" ClientSideEvents-Click="Cancel" CssClass="ProductCancelbtn" />
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
                                 </div>
-                                <div id="ProductBrandsTables"></div>
-                                <div id="NewEditBrand" class="well">
-                                    <div class="form">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <Aut:Label runat="server" Text="برند وسیله" />
-                                                <Aut:TextBox runat="server" ID="txtProductBrand" ClientInstanceName="txtProductBrand" validationgroup="NewEdit">
-                                                </Aut:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-2"></div>
+                </div>
+                <div id="popupBrands" class="modal fade modal-wide" tabindex="-1" role="dialog" aria-labelledby="popupBrands" aria-hidden="true" style="display: none; right: 25%">
+                    <div class="modal-dialog col-lg-8">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                <Aut:Label runat="server" Font-Size="24px" Text="برند ها" />
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div style="padding: 0 5% 0 5%;">
+                                        <div style="display: inline-flex; margin-top: 7px;">
+                                            <div style="margin-left: 10px;">
+                                                <Aut:Button ID="btnNewBrand" ClientInstanceName="btnNewBrand" ClientIDMode="Static" runat="server" Text="جدید" CssClass="Newbtn">
+                                                </Aut:Button>
+                                            </div>
+                                            <div>
+                                                <div class="Action-Group">
+                                                    <Aut:Label ID="lblActionBrand" runat="server" Text="عملیات" CssClass="Action-Label" />
+                                                    <div class="Action-Combo">
+                                                        <Aut:ComboBox ID="cmbBrandAction" runat="server" ClientInstanceName="cmbBrandAction" ClientEnabled="False" isaction="true" Height="35px">
+                                                            <ClientSideEvents SelectedIndexChanged="brandactions_SelectedIndexChanged" />
+                                                        </Aut:ComboBox>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="row" style="margin-top: 10px;">
+                                        </div>
+                                        <div id="ProductBrandsTables"></div>
                                         <br />
-                                        <div class="row"></div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-md-4"></div>
-                                            <div class="col-md-2">
-                                                <Aut:Button runat="server" Text="ذخیره" ClientSideEvents-Click="SaveBrand" CssClass="ProductSavebtn" />
-                                            </div>
-                                            <div class="col-md-2">
-                                                <Aut:Button runat="server" Text="انصراف" ClientSideEvents-Click="CancelBrand" CssClass="ProductCancelbtn" />
-                                            </div>
-                                            <div class="col-md-4">
+                                        <div id="NewEditBrand" class="well">
+                                            <div class="form">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <Aut:Label runat="server" Text="برند وسیله" />
+                                                        <Aut:TextBox runat="server" ID="txtProductBrand" ClientInstanceName="txtProductBrand" validationgroup="NewEdit">
+                                                        </Aut:TextBox>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="row"></div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-4"></div>
+                                                    <div class="col-md-2">
+                                                        <Aut:Button runat="server" Text="ذخیره" ClientSideEvents-Click="SaveBrand" CssClass="ProductSavebtn" />
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <Aut:Button runat="server" Text="انصراف" ClientSideEvents-Click="CancelBrand" CssClass="ProductCancelbtn" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                        </div>
                     </div>
+                    <!-- /.modal-content -->
                 </div>
-                <div class="modal-footer">
-                </div>
+                <!-- /.modal-dialog -->
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
-    </div>
+    <Aut:HiddenField ID="hdfProduct" ClientInstanceName="hdfProduct" runat="server" />
+    <asp:ObjectDataSource runat="server" ID="odsproductclassification" SelectMethod="GetAllList" TypeName="Business.Automation.ProductClassificationBusiness"></asp:ObjectDataSource>
 </asp:Content>

@@ -8,6 +8,14 @@ namespace Business
 {
     public static class FacadeAutomation
     {
+        public static Business.Automation.VwProductTypeDetailBusiness GetVwProductTypeDetailBusiness()
+        {
+            return new Automation.VwProductTypeDetailBusiness();
+        }
+        public static Business.Automation.ProductClassificationBusiness GetProductClassificationBusiness()
+        {
+            return new Automation.ProductClassificationBusiness();
+        }
         public static Business.Automation.PersonalConsumableProductBusiness GetPersonalConsumableProductBusiness()
         {
             return new Automation.PersonalConsumableProductBusiness();

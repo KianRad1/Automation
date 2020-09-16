@@ -38,6 +38,7 @@ namespace WebApp.Classes.Pages.Product
     {
         public long? ID { get; set; }
         public string ProductName { get; set; }
+        public long ProductClassificationID { get; set; }
     }
     public class ProductBrandInfo
     {

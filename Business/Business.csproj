@@ -52,6 +52,7 @@
     <Compile Include="Automation\PrivilegeBusiness.cs" />
     <Compile Include="Automation\ProductBrandBusiness.cs" />
     <Compile Include="Automation\ProductBusiness.cs" />
+    <Compile Include="Automation\ProductClassificationBusiness.cs" />
     <Compile Include="Automation\ProductStatusBusiness.cs" />
     <Compile Include="Automation\ProductTypeBusiness.cs" />
     <Compile Include="Automation\RequestCommentBusiness.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Automation\VwParamentInfoBusiness.cs" />
     <Compile Include="Automation\VwParameterValueBusiness.cs" />
     <Compile Include="Automation\VwProductDetailBusiness.cs" />
+    <Compile Include="Automation\VwProductTypeDetailBusiness.cs" />
     <Compile Include="Automation\VwRequestFullInofrmationBusiness.cs" />
     <Compile Include="Automation\VwUserPrivilegeRoleBusiness.cs" />
     <Compile Include="Automation\VwRequestTypeDetailBusiness.cs" />

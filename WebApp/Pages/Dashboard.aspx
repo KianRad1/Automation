@@ -47,8 +47,8 @@
             var ConfirmReq = {};
             ConfirmReq.ReqID = hdfAction.Get('ID');
             if (ConfirmReq.ReqID == null) {
-                ShowFailure("هیچ درخواستی انتخاب نشده است")
-                return
+                ShowFailure("هیچ درخواستی انتخاب نشده است");
+                return;
             }
             if (txtDescription.GetValue() != null) {
                 ConfirmReq.Description = txtDescription.GetValue();

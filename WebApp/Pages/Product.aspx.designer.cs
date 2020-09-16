@@ -22,6 +22,15 @@ namespace WebApp.Pages {
         protected global::WebComponent.Button btnNew;
         
         /// <summary>
+        /// downloadxlsx control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebComponent.Button downloadxlsx;
+        
+        /// <summary>
         /// lblAction control.
         /// </summary>
         /// <remarks>

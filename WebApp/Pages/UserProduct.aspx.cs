@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using WebApp.Classes.Base;
 using System.IO;
+using Models.Generated.AutomationDB.Automation;
 
 namespace WebApp.Pages
 {
@@ -37,16 +38,40 @@ namespace WebApp.Pages
             public string SerialNo { get; set; }
             public string UserProductBarcodNo { get; set; }
             public string Description { get; set; }
+            public string ProductClassification { get; set; }
+            public string ProductBrand { get; set; }
         }
         #region WebMethods
         [WebMethod]
-        public static string[] GetTableRows()
+        public static string[] GetTableRows(string Info)
         {
             try
             {
+                long ClassificationID = 0;
+                switch (Info)
+                {
+                    case "electro":
+                        ClassificationID = 1;
+                        break;
+                    case "asasie":
+                        ClassificationID = 2;
+                        break;
+                    case "sayer":
+                        ClassificationID = 3;
+                        break;
+                    case "all":
+                        ClassificationID = 0;
+                        break;
+                    default:
+                        ClassificationID = 0;
+                        break;
+                }
+
                 var ProductInfoBiz = Business.FacadeAutomation.GetVwUserProductDetailBusiness();
                 var q = ProductInfoBiz.GetAll(300);
-                q.OrderBy(Models.Generated.AutomationDB.Automation.VwUserProductDetail.Columns.ID, "DESC");
+                if (ClassificationID != 0)
+                    q.And(VwUserProductDetail.Columns.ProductClassificationID, ClassificationID);
+                q.OrderBy(VwUserProductDetail.Columns.ID, "DESC");
 
                 var ProductInfo = ProductInfoBiz.Fetch(q).ToList();
 
@@ -71,6 +96,10 @@ namespace WebApp.Pages
                         newpro.SerialNo = item.SerialNo;
                     if (!item.Description.IsNullOrEmpty())
                         newpro.Description = item.Description;
+                    if (!item.ProductClassification.IsNullOrEmpty())
+                        newpro.ProductClassification = item.ProductClassification;
+                    if (!item.ProductBrand.IsNullOrEmpty())
+                        newpro.ProductBrand = item.ProductBrand;
                     ProductPersList.Add(newpro);
                 }
                 var json = JsonConvert.SerializeObject(ProductPersList);
@@ -144,14 +173,13 @@ namespace WebApp.Pages
                 userProductInfo.ProductID = userProduct.ProductID;
                 userProductInfo.Save();
                 var productdata = Business.FacadeAutomation.GetVwUserProductDetailBusiness().GetByID(userProductInfo.ID.ToLong());
-                var QRData = "شرکت اینتک واحد " + productdata.RoleTitle + " " + productdata.FirstName + " " + productdata.LastName + System.Environment.NewLine + " تاریخ تحویل : " + userProductInfo.ReceiveTime.ToNullablePersianDateforJson() + System.Environment.NewLine + " وسیله : " + productdata.ProductName + System.Environment.NewLine + " مدل و سریال : " + productdata.ProductModel + productdata.SerialNo;
+                var QRData = "شرکت اینتک واحد " + productdata.RoleTitle + " " + productdata.FirstName + " " + productdata.LastName + System.Environment.NewLine + " تاریخ تحویل : " + userProductInfo.ReceiveTime.ToNullablePersianDateforJson() + System.Environment.NewLine + " وسیله : " + productdata.ProductName + System.Environment.NewLine + " مدل و سریال : " + productdata.ProductBrand + productdata.SerialNo;
                 QRCodeGenerator qrGenerator = new QRCodeGenerator();
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode(QRData, QRCodeGenerator.ECCLevel.Q);
                 QRCode qrCode = new QRCode(qrCodeData);
                 Bitmap qrCodeImage = qrCode.GetGraphic(20);
-                var testvar = qrCodeImage;
-                if (Directory.Exists(@"E:/TFS/Automation/WebApp/Images"))
-                    testvar.Save(@"E:/TFS/Automation/WebApp/Images/" + userProductInfo.UserProductBarcodNo + ".jpg", ImageFormat.Jpeg);
+                if (Directory.Exists(@"C:/inetpub/wwwroot/AutomationV2/Publish/Images"))
+                    qrCodeImage.Save(@"C:/inetpub/wwwroot/AutomationV2/Publish/Images/" + userProductInfo.UserProductBarcodNo + ".jpg", ImageFormat.Jpeg);
                 return new string[2] { "1", "Success" };
             }
             catch (Exception ex)
