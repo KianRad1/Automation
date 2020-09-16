@@ -26,7 +26,7 @@
                         ShowFailure(data.d[1]);
                     return;
                 },
-                function (data) {
+                function (data) { 
                     Cancel();
                     ShowFailure();
                 });
