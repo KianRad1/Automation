@@ -1,6 +1,35 @@
 ﻿<%@ Page Title="خانه" Language="C#" MasterPageFile="~/Pages/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApp.Pages.Default" IsDefault="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .versionlog, .versionno {
+            padding: 5px;
+            text-align: center;
+            background-color: #fafafa;
+            border: solid 1px #cccc;
+            font-family: IRANSansWeb;
+        }
+
+        .versionno {
+            cursor: pointer;
+        }
+
+        .versionlog {
+            padding: 50px;
+            display: none;
+            font-family: IRANSansWeb;
+            text-align: right;
+            background-color: #f2f2f2;
+        }
+
+        .panel-heading {
+            font-family: IRANSansWeb;
+        }
+
+        .latestversion {
+            font-family: IRANSansWeb_Bold;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <script>
@@ -22,11 +51,11 @@
                     if (data.d[0] == '1') {
                         Cancel();
                     }
-                    else 
+                    else
                         ShowFailure(data.d[1]);
                     return;
                 },
-                function (data) { 
+                function (data) {
                     Cancel();
                     ShowFailure();
                 });
@@ -34,70 +63,96 @@
 
         function Clear() {
         }
+        function ShowVersionLog(logno) {
+            $(logno.nextElementSibling).slideToggle()
+        }
 
     </script>
     <div class="form">
-        <div class="col-xs-12 col-md-3"></div>
-        <div class="col-xs-12 col-md-6">
-            <div class="panel panel-primary">
-                <div style="font-family: 'Iranian Sans'" class="panel-heading">
-                    <p><span class="glyphicon glyphicon-search"></span>&nbsp مشخصات</p>
-                </div>
-                <div class="InfoTable">
-                    <div class="panel-body">
-                        <div class="row" style="border-bottom: groove; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-bottom-color: #99ddff;">
-                            <div class="col-xs-12 col-md-6">
-                                <p><span class="glyphicon glyphicon-user"></span>&nbsp نام:</p>
+        <%-- <div class="row">
+            <div class="col-xs-12 col-md-3"></div>
+            <div class="col-xs-12 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <p><span class="glyphicon glyphicon-search"></span>&nbsp مشخصات</p>
+                    </div>
+                    <div class="InfoTable">
+                        <div class="panel-body">
+                            <div class="row" style="border-bottom: groove; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-bottom-color: #99ddff;">
+                                <div class="col-xs-12 col-md-6">
+                                    <p><span class="glyphicon glyphicon-user"></span>&nbsp نام:</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="text-align: center;">
+                                    <Aut:Label ID="lblName" ClientInstanceName="lblName" runat="server" Font-Names="Century Gothic" Font-Size="25pt" />
+                                </div>
                             </div>
-                            <div class="col-xs-12 col-md-6" style="text-align: center;">
-                                <Aut:Label ID="lblName" ClientInstanceName="lblName" runat="server" Font-Names="Century Gothic" Font-Size="25pt" />
+                            <div class="row" style="border-bottom: groove; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-bottom-color: #99ddff;">
+                                <div class="col-xs-12 col-md-6">
+                                    <p><span class="glyphicon glyphicon-user"></span>&nbsp نام خانوادگی:</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="text-align: center;">
+                                    <Aut:Label ID="lblFamily" ClientInstanceName="lblFamily" runat="server" Font-Names="Century Gothic" Font-Size="25pt" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="row" style="border-bottom: groove; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-bottom-color: #99ddff;">
-                            <div class="col-xs-12 col-md-6">
-                                <p><span class="glyphicon glyphicon-user"></span>&nbsp نام خانوادگی:</p>
+                            <div class="row" style="border-bottom: groove; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-bottom-color: #99ddff;">
+                                <div class="col-xs-12 col-md-6">
+                                    <p><span class="glyphicon glyphicon-pencil"></span>&nbsp نام کاربری:</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="text-align: center;">
+                                    <Aut:Label ID="lblUsername" ClientInstanceName="lblUsername" runat="server" Font-Names="Century Gothic" Font-Size="25pt" />
+                                </div>
                             </div>
-                            <div class="col-xs-12 col-md-6" style="text-align: center;">
-                                <Aut:Label ID="lblFamily" ClientInstanceName="lblFamily" runat="server" Font-Names="Century Gothic" Font-Size="25pt" />
+                            <div class="row" style="border-bottom: groove; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-bottom-color: #99ddff;">
+                                <div class="col-xs-12 col-md-6">
+                                    <p><span class="glyphicon glyphicon-home"></span>&nbsp آدرس:</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="text-align: center;">
+                                    <Aut:Label ID="lblAddress" ClientInstanceName="lblAddress" runat="server" Font-Names="B Yekan" Font-Size="25pt" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="row" style="border-bottom: groove; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-bottom-color: #99ddff;">
-                            <div class="col-xs-12 col-md-6">
-                                <p><span class="glyphicon glyphicon-pencil"></span>&nbsp نام کاربری:</p>
+                            <div class="row" style="border-bottom: groove; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-bottom-color: #99ddff;">
+                                <div class="col-xs-12 col-md-6">
+                                    <p><span class="glyphicon glyphicon-envelope"></span>&nbsp ایمیل:</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="text-align: center;">
+                                    <Aut:Label ID="lblEmail" ClientInstanceName="lblEmail" runat="server" Font-Names="Century Gothic" Font-Size="25pt" />
+                                </div>
                             </div>
-                            <div class="col-xs-12 col-md-6" style="text-align: center;">
-                                <Aut:Label ID="lblUsername" ClientInstanceName="lblUsername" runat="server" Font-Names="Century Gothic" Font-Size="25pt" />
-                            </div>
-                        </div>
-                        <div class="row" style="border-bottom: groove; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-bottom-color: #99ddff;">
-                            <div class="col-xs-12 col-md-6">
-                                <p><span class="glyphicon glyphicon-home"></span>&nbsp آدرس:</p>
-                            </div>
-                            <div class="col-xs-12 col-md-6" style="text-align: center;">
-                                <Aut:Label ID="lblAddress" ClientInstanceName="lblAddress" runat="server" Font-Names="B Yekan" Font-Size="25pt" />
-                            </div>
-                        </div>
-                        <div class="row" style="border-bottom: groove; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-bottom-color: #99ddff;">
-                            <div class="col-xs-12 col-md-6">
-                                <p><span class="glyphicon glyphicon-envelope"></span>&nbsp ایمیل:</p>
-                            </div>
-                            <div class="col-xs-12 col-md-6" style="text-align: center;">
-                                <Aut:Label ID="lblEmail" ClientInstanceName="lblEmail" runat="server" Font-Names="Century Gothic" Font-Size="25pt" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <p><span class="glyphicon glyphicon-earphone"></span>&nbsp موبایل:</p>
-                            </div>
-                            <div class="col-xs-12 col-md-6" style="text-align: center;">
-                                <Aut:Label ID="lblMobile" ClientInstanceName="lblMobile" runat="server" Font-Names="Century Gothic" Font-Size="25pt" />
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p><span class="glyphicon glyphicon-earphone"></span>&nbsp موبایل:</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="text-align: center;">
+                                    <Aut:Label ID="lblMobile" ClientInstanceName="lblMobile" runat="server" Font-Names="Century Gothic" Font-Size="25pt" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-xs-12 col-md-3"></div>
+        </div>--%>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <p><span class="glyphicon glyphicon-pencil"></span>&nbsp تغییرات ورژن ها</p>
+                    </div>
+                    <div class="panel-body">
+                        <%-- <div class="versionno latestversion" onclick="ShowVersionLog(this)">ورژن  1.0.4 (نسخه فعلی)</div>
+                        <div class="versionlog">رفع باگ های موجود</div>
+                        <div class="versionno" onclick="ShowVersionLog(this)">ورژن  1.0.3</div>
+                        <div class="versionlog">رفع باگ های موجود</div>
+                        <div class="versionno" onclick="ShowVersionLog(this)">ورژن  1.0.2</div>
+                        <div class="versionlog">رفع باگ های موجود</div>--%>
+                        <div class="versionno latestversion" onclick="ShowVersionLog(this)">ورژن  1.0.1 (نسخه فعلی)</div>
+                        <div class="versionlog">رفع باگ های موجود</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
         </div>
-        <div class="col-xs-12 col-md-3"></div>
     </div>
-        <Aut:HiddenField ID="hdfUser" ClientInstanceName="hdfUser" runat="server" />
+    <Aut:HiddenField ID="hdfUser" ClientInstanceName="hdfUser" runat="server" />
 </asp:Content>

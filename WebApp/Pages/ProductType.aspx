@@ -38,7 +38,7 @@
                             { title: "نام وسیله", field: "ProductName", headerFilter: "input" },
                             { title: "نوع وسیله", field: "ProductClassification", headerFilter: "input" },
                             { title: "تعداد وسیله", field: "ProductCount", headerFilter: "input" },
-                        ]; 
+                        ];
                         CreateDBTable(tabledata, tablecolumns, tablediv);
                     }
                     else
@@ -368,6 +368,8 @@
                             <div style="display: inline-flex; margin-top: 7px;">
                                 <div style="margin-left: 10px;">
                                     <Aut:Button ID="btnNew" ClientInstanceName="btnNew" ClientIDMode="Static" runat="server" Text="جدید" CssClass="Newbtn">
+                                    </Aut:Button>
+                                    <Aut:Button ID="downloadxlsx" ClientInstanceName="downloadxlsx" ClientIDMode="Static" Width="150" runat="server" Text="دریافت اکسل" CssClass="Newbtn">
                                     </Aut:Button>
                                 </div>
                                 <div>

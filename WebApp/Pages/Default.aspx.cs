@@ -28,12 +28,12 @@ namespace WebApp.Pages
             if (UserInfo == null)
                 throw new Exception("User Not Found");
 
-            lblName.Text= UserInfo.Name;
-            lblFamily.Text= UserInfo.Family;
-            lblUsername.Text = UserInfo.Username;
-            lblAddress.Text = UserInfo.Address;
-            lblEmail.Text = UserInfo.Email;
-            lblMobile.Text = UserInfo.Mobile;
+            //lblName.Text= UserInfo.Name;
+            //lblFamily.Text= UserInfo.Family;
+            //lblUsername.Text = UserInfo.Username;
+            //lblAddress.Text = UserInfo.Address;
+            //lblEmail.Text = UserInfo.Email;
+            //lblMobile.Text = UserInfo.Mobile;
 
 
             if (CurrentUser.Level == null || CurrentUser.RoleGroupID == null || CurrentUser.Name.IsNullOrEmpty() || CurrentUser.Family.IsNullOrEmpty())
