@@ -1879,6 +1879,56 @@ namespace Models.Generated.AutomationDB.Automation
 
     
 
+	[TableName("dbo.VersionChangesLog")]
+
+
+
+	[PrimaryKey("ID")]
+
+
+
+
+	[ExplicitColumns]
+
+    public partial class VersionChangesLog : AutomationDB.Record<VersionChangesLog>  
+    {
+
+	public struct Columns
+		{
+		
+
+		public static String  ID  = @"ID";
+		
+
+		public static String  VersionNo  = @"VersionNo";
+		
+
+		public static String  ChangesLog  = @"ChangesLog";
+		
+		}
+
+
+
+
+		[Column] public long ID { get; set; }
+ 
+  
+
+
+
+		[Column] public string VersionNo { get; set; }
+ 
+  
+
+
+
+		[Column] public string ChangesLog { get; set; }
+ 
+  
+	}  
+
+    
+
 	[TableName("dbo.AutomasionTest")]
 
 

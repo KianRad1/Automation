@@ -19,7 +19,7 @@ namespace WebApp.Pages
         {
 
             string Error = Request.QueryString["Error"];
-            if(!string.IsNullOrEmpty(Error))
+            if (!string.IsNullOrEmpty(Error))
             {
                 throw new Exception("Access Deny");
             }
@@ -27,6 +27,26 @@ namespace WebApp.Pages
             var UserInfo = Business.FacadeAutomation.GetUserBusiness().GetByID(CurrentUser.ID);
             if (UserInfo == null)
                 throw new Exception("User Not Found");
+
+            var VersionChanges = Business.FacadeAutomation.GetVersionChangesLogBusiness().GetLatestVersionChanges();
+            if (VersionChanges.Count > 0)
+            {
+                for (int i = 0; i < VersionChanges.Count; i++)
+                {
+                    if (!(VersionChanges[i].VersionNo.IsNullOrEmpty() || VersionChanges[i].ChangesLog.IsNullOrEmpty()))
+                    {
+                        VersionChanges[i].ChangesLog = VersionChanges[i].ChangesLog.Replace("*", "<br /><br />");
+                        if (i == 0)
+                        {
+                            VersionDiv.InnerHtml += "<div class='versionno latestversion' onclick='ShowVersionLog(this)'>" + VersionChanges[i].VersionNo + "\n (نسخه فعلی)</div><div class='versionlog'>" + VersionChanges[i].ChangesLog + "</div>";
+                        }
+                        else
+                        {
+                            VersionDiv.InnerHtml += "<div class='versionno' onclick='ShowVersionLog(this)'>" + VersionChanges[i].VersionNo + "</div><div class='versionlog'>" + VersionChanges[i].ChangesLog + "</div>";
+                        }
+                    }
+                }
+            }
 
             //lblName.Text= UserInfo.Name;
             //lblFamily.Text= UserInfo.Family;

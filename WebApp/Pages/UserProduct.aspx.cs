@@ -14,6 +14,7 @@ using System.Drawing.Imaging;
 using WebApp.Classes.Base;
 using System.IO;
 using Models.Generated.AutomationDB.Automation;
+using System.Drawing.Drawing2D;
 
 namespace WebApp.Pages
 {
@@ -176,8 +177,24 @@ namespace WebApp.Pages
                 var QRData = "شرکت اینتک واحد " + productdata.RoleTitle + " " + productdata.FirstName + " " + productdata.LastName + System.Environment.NewLine + " تاریخ تحویل : " + userProductInfo.ReceiveTime.ToNullablePersianDateforJson() + System.Environment.NewLine + " وسیله : " + productdata.ProductName + System.Environment.NewLine + " مدل و سریال : " + productdata.ProductBrand + productdata.SerialNo;
                 QRCodeGenerator qrGenerator = new QRCodeGenerator();
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode(QRData, QRCodeGenerator.ECCLevel.Q);
+                //AsciiQRCode qrCode = new AsciiQRCode(qrCodeData);
                 QRCode qrCode = new QRCode(qrCodeData);
-                Bitmap qrCodeImage = qrCode.GetGraphic(20);
+                Bitmap qrCodeImage = qrCode.GetGraphic(2);
+
+                var rectf = new RectangleF(40, 128, 10, 10); //rectf for My Text
+                using (Graphics g = Graphics.FromImage(qrCodeImage))
+                {
+                    g.DrawRectangle(new Pen(Color.Red, 1), 40, 128, 10, 10);
+                    g.SmoothingMode = SmoothingMode.AntiAlias;
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    StringFormat sf = new StringFormat();
+                    sf.Alignment = StringAlignment.Center;
+                    sf.LineAlignment = StringAlignment.Center;
+                    g.DrawString("Hello", new System.Drawing.Font("Tahoma", 4, FontStyle.Bold), Brushes.Black, rectf, sf);
+                }
+
+
                 if (Directory.Exists(@"C:/inetpub/wwwroot/AutomationV2/Publish/Images"))
                     qrCodeImage.Save(@"C:/inetpub/wwwroot/AutomationV2/Publish/Images/" + userProductInfo.UserProductBarcodNo + ".jpg", ImageFormat.Jpeg);
                 return new string[2] { "1", "Success" };

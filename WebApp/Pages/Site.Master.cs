@@ -11,7 +11,8 @@ namespace WebApp.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            var LatestVersion = Business.FacadeAutomation.GetVersionChangesLogBusiness().GetLastVersion();
+            LatestVersionNo.InnerText += LatestVersion;
         }
     }
 }

@@ -8,6 +8,10 @@ namespace Business
 {
     public static class FacadeAutomation
     {
+        public static Business.Automation.VersionChangesLogBusiness GetVersionChangesLogBusiness()
+        {
+            return new Automation.VersionChangesLogBusiness();
+        }
         public static Business.Automation.VwProductTypeDetailBusiness GetVwProductTypeDetailBusiness()
         {
             return new Automation.VwProductTypeDetailBusiness();

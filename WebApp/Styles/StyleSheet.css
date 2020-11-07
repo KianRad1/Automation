@@ -98,6 +98,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 .GridHidePanels {
     visibility: hidden;
     display: none;
@@ -139,6 +140,7 @@
         background-color: white;
         color: black;
     }
+
 .dxeTextBox {
     border: 1px solid #cccccc;
     color: white;
@@ -148,12 +150,14 @@
     border-radius: 10px;
     vertical-align: central;
 }
+
 .dxeMemo {
     border: 1px solid #cccccc;
     color: white;
     color: white;
     border-radius: 7px;
 }
+
 .Newbtn {
     background-color: rgb(58, 96, 146);
     border: 2px solid rgb(58, 96, 146);
@@ -162,26 +166,29 @@
 .Cancelbtn {
     background-color: #b30000;
     border: 2px solid #b30000;
-    padding-top:0.7rem;
+    padding-top: 0.7rem;
 }
 
 .Savebtn {
     background-color: #367c3a;
     border: 2px solid #367c3a;
-    padding-top:0.7rem;
+    padding-top: 0.7rem;
 }
+
 .ProductSavebtn {
     background-color: #367c3a;
     border: 2px solid #367c3a;
     padding-top: 0.7rem;
     width: 100% !important;
 }
+
 .ProductCancelbtn {
     background-color: #b30000;
     border: 2px solid #b30000;
     padding-top: 0.7rem;
-    width:100% !important;
+    width: 100% !important;
 }
+
 #toast-container {
     font-family: 'B Nazanin';
     font-size: 20px;
@@ -199,6 +206,7 @@
 .well {
     border-radius: 15px;
 }
+
 .Action-Group {
     width: 450px;
 }
@@ -260,32 +268,39 @@
 .dxeButtonEditButton {
     border: 0;
 }
-.dropdownimg{
-    background-color:none;
+
+.dropdownimg {
+    background-color: none;
 }
+
 .dxgvSelectedRow {
     background-color: rgba(199, 218, 229, 0.7);
     font-weight: bold;
-    color:black;
+    color: black;
 }
 
 .dxgvDataRow {
     background-color: #EFF0F2;
     height: 30px;
 }
+
 .dxgvDataRowAlt {
     background-color: #dcdcdc;
 }
+
 .navbar-inverse {
-    border-bottom:3px solid rgb(80, 206, 208);
+    border-bottom: 3px solid rgb(80, 206, 208);
 }
-.dropdown-menu>li>a:hover {
+
+.dropdown-menu > li > a:hover {
     background-color: rgb(80, 206, 208);
 }
-.dropdown-menu > li:first-child>a {
-margin-top:-6px;
+
+.dropdown-menu > li:first-child > a {
+    margin-top: -6px;
 }
-.dropdown-menu > li:last-child>a {
+
+.dropdown-menu > li:last-child > a {
     margin-bottom: -6px;
 }
 /*.dropdown-menu > li > a:not(:first-child):not(:last-child){
@@ -301,12 +316,15 @@ margin-top:-6px;
     border-radius: 10px;
     background-color: #f2f2f2 !important;
 }
+
 .tabulator-header {
     background-color: #3A6092 !important;
 }
+
 .tabulator-col {
     background-color: #3A6092 !important;
 }
+
 div.tabulator-header-filter input {
     border-radius: 7px;
 }
@@ -360,19 +378,23 @@ div.tabulator-header-filter input {
         background-color: lightblue !important;
     }
 
-    #NewEdit{
-        display:none;
-    }
+#NewEdit {
+    display: none;
+}
+
 div.tabulator-header-filter input {
     border-radius: 7px;
     color: black !important;
 }
+
 .tabulator-tableHolder {
     height: 100% !important;
 }
+
 #toast-container {
     font-family: IRANSansWeb_light;
 }
+
 #selectproductdetail {
     height: 3rem;
     width: 15rem;
@@ -382,6 +404,7 @@ div.tabulator-header-filter input {
     font-family: Vazir;
     text-align: center;
 }
+
 #selectuserbygroup {
     height: 3rem;
     width: 15rem;
@@ -395,6 +418,35 @@ div.tabulator-header-filter input {
 #NewEditRemove {
     display: none;
 }
+
 #NewEditAdd {
     display: none;
 }
+
+.versionlog, .versionno {
+    padding: 5px;
+    text-align: center;
+    background-color: #fafafa;
+    border: solid 1px #cccc;
+    font-family: IRANSansWeb;
+}
+
+.versionno {
+    cursor: pointer;
+}
+
+.versionlog {
+    padding: 40px 10px 40px 10px;
+    display: none;
+    font-family: IRANSansWeb;
+    text-align: right;
+    background-color: #f2f2f2;
+}
+.latestversion {
+    font-family: IRANSansWeb_Bold;
+}
+
+.panel-heading {
+    font-family: IRANSansWeb;
+}
+

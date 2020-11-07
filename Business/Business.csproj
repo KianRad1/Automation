@@ -67,6 +67,7 @@
     <Compile Include="Automation\StatusBusiness.cs" />
     <Compile Include="Automation\UserBusiness.cs" />
     <Compile Include="Automation\UserRoleBusiness.cs" />
+    <Compile Include="Automation\VersionChangesLogBusiness.cs" />
     <Compile Include="Automation\VwParamentInfoBusiness.cs" />
     <Compile Include="Automation\VwParameterValueBusiness.cs" />
     <Compile Include="Automation\VwProductDetailBusiness.cs" />

@@ -239,14 +239,12 @@
                                     <Aut:Button ID="downloadxlsx" ClientInstanceName="downloadxlsx" ClientIDMode="Static" Width="150" runat="server" Text="دریافت اکسل" CssClass="Newbtn">
                                     </Aut:Button>
                                 </div>
-                                <div>
-                                    <div class="Action-Group">
-                                        <Aut:Label ID="lblAction" runat="server" Text="عملیات" CssClass="Action-Label" />
-                                        <div class="Action-Combo">
-                                            <Aut:ComboBox ID="cmbAction" runat="server" ClientInstanceName="cmbAction" ClientEnabled="False" isaction="true" Height="35px">
-                                                <ClientSideEvents SelectedIndexChanged="actions_SelectedIndexChanged" />
-                                            </Aut:ComboBox>
-                                        </div>
+                                <div class="Action-Group">
+                                    <Aut:Label ID="lblAction" runat="server" Text="عملیات" CssClass="Action-Label" />
+                                    <div class="Action-Combo">
+                                        <Aut:ComboBox ID="cmbAction" runat="server" ClientInstanceName="cmbAction" ClientEnabled="False" isaction="true" Height="35px">
+                                            <ClientSideEvents SelectedIndexChanged="actions_SelectedIndexChanged" />
+                                        </Aut:ComboBox>
                                     </div>
                                 </div>
                             </div>

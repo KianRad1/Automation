@@ -2,33 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .versionlog, .versionno {
-            padding: 5px;
-            text-align: center;
-            background-color: #fafafa;
-            border: solid 1px #cccc;
-            font-family: IRANSansWeb;
-        }
-
-        .versionno {
-            cursor: pointer;
-        }
-
-        .versionlog {
-            padding: 50px;
-            display: none;
-            font-family: IRANSansWeb;
-            text-align: right;
-            background-color: #f2f2f2;
-        }
-
-        .panel-heading {
-            font-family: IRANSansWeb;
-        }
-
-        .latestversion {
-            font-family: IRANSansWeb_Bold;
-        }
+     
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
@@ -139,15 +113,7 @@
                     <div class="panel-heading">
                         <p><span class="glyphicon glyphicon-pencil"></span>&nbsp تغییرات ورژن ها</p>
                     </div>
-                    <div class="panel-body">
-                        <%-- <div class="versionno latestversion" onclick="ShowVersionLog(this)">ورژن  1.0.4 (نسخه فعلی)</div>
-                        <div class="versionlog">رفع باگ های موجود</div>
-                        <div class="versionno" onclick="ShowVersionLog(this)">ورژن  1.0.3</div>
-                        <div class="versionlog">رفع باگ های موجود</div>
-                        <div class="versionno" onclick="ShowVersionLog(this)">ورژن  1.0.2</div>
-                        <div class="versionlog">رفع باگ های موجود</div>--%>
-                        <div class="versionno latestversion" onclick="ShowVersionLog(this)">ورژن  1.0.1 (نسخه فعلی)</div>
-                        <div class="versionlog">رفع باگ های موجود</div>
+                    <div id="VersionDiv" class="panel-body" runat="server">
                     </div>
                 </div>
             </div>
